@@ -2,27 +2,19 @@ import './App.css';
 import { useAuthContext } from "@asgardeo/auth-react";
 import Nav from './components/nav/nav';
 import Cards from './components/cards/cards';
-
-interface Card {
-    id: number;
-    url: string;
-    title: string;
-  };
-
-  interface Props {
-  data: Array<Card>;
-};
+import Profile from './components/profile/profile';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { HomePage } from './pages/home';
+import { NotFoundPage } from './pages/404';
 
 function App() {
   const { state, signIn, signOut } = useAuthContext();
 
-  const data: Array<Card> = [{id: 22, url: "jjik", title: "hjj"}, {id: 22, url: "jjik", title: "hjj"}, {id: 22, url: "jjik", title: "hjj"}];
-
   return (
-    <div className="App">
-        <>
-            <Nav></Nav>
-            <header className="App-header">
+    <Router>
+        <div className="App">
+        <Nav></Nav>
+        <header className="App-header">
             <div>
                 <h1>Sample Application</h1>
                 <p className='p-description'>This sample application demonstrates the authentication flow using React and Asgardeo.</p>
@@ -37,8 +29,11 @@ function App() {
                 ) }
             </div>
             </header>
-        </>
-        <Cards></Cards>
+        <Routes>
+            <Route path="/" element={ <HomePage /> } />
+            <Route path="/profile" element={ <Profile /> } />
+            <Route element={ <NotFoundPage /> } />
+        </Routes>
         <div className="footer">
             <footer className="page-footer font-small blue">
                 <div className="footer-copyright text-center py-3">© 2023 Copyright:
@@ -46,7 +41,9 @@ function App() {
                 </div>
             </footer>
         </div>
-    </div>
+        </div>
+    </Router>
+    
   );
 }
 

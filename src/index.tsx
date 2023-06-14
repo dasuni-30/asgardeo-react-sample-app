@@ -15,7 +15,7 @@ root.render(
       signOutRedirectURL: "http://localhost:3000",
       clientID: "8_0QVgk0nf5Lij6C2IIdsY4Jhl0a",
       baseUrl: "https://api.asgardeo.io/t/dasuorg",
-      scope: [ "openid","profile" ]
+      scope: [ "openid","profile", "internal_login" ]
   } }
 >
   <React.StrictMode>
