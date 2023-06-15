@@ -21,24 +21,26 @@ function Profile() {
           <div>
             <form>
               <h3>
-                <strong>{"User "}</strong> Profile
+                <strong>User Profile</strong> 
               </h3>
-            <p>
-              <strong>Username:</strong>
-              <input type="text" id="name" name="name" value={userInfo?.userName.split("/")[1]} required/>
-            </p>
-            <p>
-              <strong>Email:</strong>{" "}
-              <input type="text" id="name" name="name" value={userInfo?.emails[0]}required/>
-            </p>
-            <p>
-            <strong>First Name:</strong>
-            <input type="text" id="name" name="name" required/>
-            </p>
-            <p>
-            <strong>Last Name:</strong>
-            <input type="text" id="name" name="name" required/>
-            </p>
+            <table className="user-profile-table ">
+            <tr>
+              <td><strong>Username:</strong></td>
+              <td><input type="text" id="name" name="name" value={userInfo?.userName.split("/")[1]} required/></td>
+            </tr>
+            <tr>
+            <td><strong>Email:</strong>{" "}</td>
+            <td><input type="text" id="name" name="name" value={userInfo?.emails[0]}required/></td>
+            </tr>
+            <tr>
+            <td><strong>First Name:</strong></td>
+            <td><input type="text" id="name" name="name" required/></td>
+            </tr>
+            <tr>
+            <td><strong>Last Name:</strong></td>
+            <td><input type="text" id="name" name="name" value={userInfo?.name?.familyName} required/></td>
+            </tr>
+            </table>
             <input type="submit" value="Submit"/>
             </form>
 

@@ -16,9 +16,8 @@
  * under the License.
  */
 
-import { useAuthContext } from "@asgardeo/auth-react";
+
 import { FunctionComponent, ReactElement } from "react";
-import Nav from "../components/nav/nav";
 import Cards from "../components/cards/cards";
 
 /**
@@ -29,12 +28,6 @@ import Cards from "../components/cards/cards";
  * @return {React.ReactElement}
  */
 export const HomePage: FunctionComponent = (): ReactElement => {
-
-    const {
-        state,
-        signIn,
-        signOut,
-    } = useAuthContext();
 
     return (
     <div className="App">

@@ -2,13 +2,10 @@ import React from 'react';
 import styles from './Nav.module.css';
 import * as data from './links.json';
 import ASGARDEO_LOGO from "../../images/asgardeo-logo-transparent.png";
-// import {useNavigate} from 'react-router-dom';
 import routesConfig from '../../configs/routes-config';
 import { useNavigate } from 'react-router-dom';
 const linksString = JSON.stringify(data);
 const links = JSON.parse(linksString).links;
-
-
 
 type Link = {
     label: string;
@@ -34,14 +31,14 @@ const Links: React.FC<{ links: Link[] }> = ({ links }) => {
 
 const Nav: React.FC<{}> = () => {
     const navigate = useNavigate();
-  const routeChange = () =>{ 
+    const routeChange = () =>{ 
     let path = routesConfig.profile; 
     navigate(path);
   }
     return (
         <nav className={styles.navbar}>
             <div className={styles['logo-container']}>
-            <img alt="react-logo" src={ ASGARDEO_LOGO } className="react-logo-image"/>
+            <div onClick={() => navigate(routesConfig.home)}><img alt="react-logo" src={ ASGARDEO_LOGO } className="react-logo-image"/></div>
             <button onClick={routeChange}>Profile</button>
             </div>
             <Links links={links} />
