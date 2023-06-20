@@ -1,5 +1,4 @@
 import { FunctionComponent, ReactElement } from "react";
-import Cards from "../components/cards/cards";
 
 /**
  * Home page for the Sample.
@@ -8,11 +7,11 @@ import Cards from "../components/cards/cards";
  *
  * @return {React.ReactElement}
  */
-export const HomePage: FunctionComponent = (): ReactElement => {
+export const ResourcesPage: FunctionComponent = (): ReactElement => {
 
     return (
-        <div className="App">
-            <Cards></Cards>
-        </div>
+    <div className="App">
+        <h1>Hello</h1>
+    </div>
     );
 };

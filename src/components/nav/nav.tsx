@@ -1,9 +1,10 @@
-import React from 'react';
-import styles from './Nav.module.css';
+import React, { useEffect, useState } from 'react';
 import * as data from './links.json';
 import ASGARDEO_LOGO from "../../images/asgardeo-logo-transparent.png";
 import routesConfig from '../../configs/routes-config';
 import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '@asgardeo/auth-react';
+
 const linksString = JSON.stringify(data);
 const links = JSON.parse(linksString).links;
 
@@ -12,37 +13,74 @@ type Link = {
     href: string;
 };
 
-const Links: React.FC<{ links: Link[] }> = ({ links }) => {
+const Links: React.FunctionComponent<{ links: Link[] }> = ({ links }) => {
     
     return (
-        <div className={styles['links-container']}>
+        <>
             {links.map((link: Link) => {
                 return (
-                    <div key={link.href} className={styles['link']}>
-                        <a href={link.href}>
-                            {link.label}
-                        </a>
-                    </div>
+                    <a href={link.href}>
+                        {link.label}
+                    </a>
                 )
             })}
-        </div>
+        </>
     )
 };
 
-const Nav: React.FC<{}> = () => {
+const Nav: React.FunctionComponent<{}> = () => {
+    const { state, signIn, signOut } = useAuthContext();
+    const [ isResourcesAllowed, setIsResourcesAllowed ] = useState<boolean>();
+
     const navigate = useNavigate();
-    const routeChange = () =>{ 
-    let path = routesConfig.profile; 
-    navigate(path);
-  }
+
+    const routeProfileChange = () =>{ 
+        let path = routesConfig.profile; 
+        navigate(path);
+    }
+
+    const routeResourcesChange = () =>{ 
+        let path = routesConfig.resource; 
+        navigate(path);
+    }
+
+    // Filter the cutsom scope from the allowed scopes.
+    useEffect(() => {
+        if (state.isAuthenticated && state?.allowedScopes?.includes("read_profile")) {
+            setIsResourcesAllowed(true);
+        } 
+    }, [state]);
+
     return (
-        <nav className={styles.navbar}>
-            <div className={styles['logo-container']}>
-            <div onClick={() => navigate(routesConfig.home)}><img alt="react-logo" src={ ASGARDEO_LOGO } className="react-logo-image"/></div>
-            <button onClick={routeChange}>Profile</button>
+        <div className="navbar">
+             <div onClick={() => navigate(routesConfig.home)}>
+                <img alt="react-logo" src={ ASGARDEO_LOGO } className="react-logo-image"/>
             </div>
-            <Links links={links} />
-        </nav>
+             <div className="right-panel">
+                { 
+                    state.isAuthenticated
+                    && <a href="" onClick={routeProfileChange}>Profile</a>
+                }
+                <Links links={links} />
+                {
+                    isResourcesAllowed
+                    && <a href="" onClick={routeResourcesChange}>Resources</a>
+                }
+                { state.isAuthenticated ? (
+                    <>
+                        <p>Hello {state?.username}</p>
+                        <button className='btn' onClick={() => signOut()}>Signout</button>
+                    </>
+                ) : (
+                    <>
+                        <button className='btn' onClick={() => signIn()}>Signin</button>
+                        <a href='https://accounts.asgardeo.io/t/dasuorg/accountrecoveryendpoint/register.do?client_id='>
+                            <button className='btn'>Signup</button>
+                        </a>
+                    </>
+                ) }
+            </div>
+        </div>
     )
 }
 

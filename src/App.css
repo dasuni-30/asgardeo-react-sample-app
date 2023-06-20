@@ -82,6 +82,28 @@
   margin-right: auto;
 }
 
+.navbar {
+  display: flex;
+  border-bottom: 1px solid #b3b0b085;
+  background: #F7F7F7;
+}
+
+.navbar a {
+  padding: 10px;
+  text-decoration: none;
+  color: #000;
+}
+
+.right-panel {
+  width: 70%;
+  padding: 10px;
+}
+
+.left-panel {
+  width: 30%;
+  padding: 10px;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -122,12 +144,21 @@ body {
   padding: 16px;
   text-align: center;
   background-color: #f1f1f1;
+  height: 225px;
 }
 
 .footer {
   padding: 1%;
   border-top: 1px solid #b3b0b085;
   background: #F7F7F7;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer a {
+  text-decoration: none;
+  color: #000;
 }
 
 @media (max-width: 400px) {
@@ -152,4 +183,15 @@ body {
 
 .react-logo-image {
   width: 30%;
+  padding: 10px;
+}
+
+.btn {
+  border: 2px solid #e06d1b7b;
+  background-color: white;
+  color: black;
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
 }
