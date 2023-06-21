@@ -2,16 +2,16 @@ import { getUserDetails, updateUserDetails } from "../../api/user-info";
 import { useEffect, useState } from "react";
 
 interface FormValues {
-  name: string;
+  username: string;
   email: string;
-  firstName: string;
+  givenName: string;
   lastName: string;
 }
 
 const initialFormValues: FormValues = {
-  name: '',
+  username: '',
   email: '',
-  firstName: '',
+  givenName: '',
   lastName: ''
 };
 
@@ -35,9 +35,9 @@ const Profile: React.FunctionComponent = () => {
   useEffect(() => {
     if (userInfo) {
       setFormValues({
-        name: userInfo?.userName?.split("/")[1],
+        username: userInfo?.userName?.split("/")[1],
         email: userInfo?.emails[0],
-        firstName: userInfo?.name?.firstName,
+        givenName: userInfo?.name?.givenName,
         lastName: userInfo?.name?.familyName});
       console.log(formValues);
     }
@@ -57,27 +57,26 @@ const Profile: React.FunctionComponent = () => {
     let _formData = {
       ...userInfo,
       userName: `DEFAULT/${userInfo?.userName?.split("/")[1]}`,
-      name: { familyName: formValues.lastName, firstName: formValues.firstName },
+      name: { familyName: formValues?.lastName, givenName: formValues?.givenName },
     };
     updateUserDetails(_formData);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h3>
-        <strong>User Profile</strong> 
-      </h3>
+      <h2>User Profile</h2>
       <table className="user-profile-table">
         <tr>
           <td>
-            <label htmlFor="name">Name:</label>
+            <label htmlFor="username">Name:</label>
           </td>
           <td>
             <input
               type="text"
-              id="name"
-              name="name"
-              value={formValues?.name}
+              id="username"
+              name="username"
+              value={formValues?.username}
+              readOnly
             />
           </td>
         </tr>
@@ -92,31 +91,32 @@ const Profile: React.FunctionComponent = () => {
               name="email"
               value={formValues?.email}
               onChange={handleChange}
+              readOnly
             />
           </td>
         </tr>
         <tr>
           <td>
-            <label htmlFor="name">First Name:</label>
+            <label htmlFor="givenName">First Name:</label>
           </td>
           <td>
             <input
               type="text"
-              id="firstName"
-              name="firstName"
-              value={formValues?.firstName}
+              id="givenName"
+              name="givenName"
+              value={formValues?.givenName}
               onChange={handleChange}
             />
           </td>
         </tr>
         <tr>
           <td>
-            <label htmlFor="name">Last Name:</label>
+            <label htmlFor="lastName">Last Name:</label>
           </td>
           <td>
             <input
               type="text"
-              id="firstName"
+              id="lastName"
               name="lastName"
               value={formValues?.lastName}
               onChange={handleChange}
@@ -124,7 +124,9 @@ const Profile: React.FunctionComponent = () => {
           </td>
         </tr>
         <tr>
+          <td colSpan={2}>
           <button type="submit">Submit</button>
+          </td>
         </tr>
       </table>
     </form>

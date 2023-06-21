@@ -53,8 +53,13 @@ const Nav: React.FunctionComponent<{}> = () => {
 
     return (
         <div className="navbar">
-             <div onClick={() => navigate(routesConfig.home)}>
-                <img alt="react-logo" src={ ASGARDEO_LOGO } className="react-logo-image"/>
+            <div className="left-panel">
+                <div onClick={() => navigate(routesConfig.home)}>
+                    <img alt="react-logo" src={ ASGARDEO_LOGO } className="react-logo-image"/>
+                </div>
+            </div>
+            <div className="center-panel">
+                <h3>Start Pack</h3>
             </div>
              <div className="right-panel">
                 { 
@@ -67,10 +72,7 @@ const Nav: React.FunctionComponent<{}> = () => {
                     && <a href="" onClick={routeResourcesChange}>Resources</a>
                 }
                 { state.isAuthenticated ? (
-                    <>
-                        <p>Hello {state?.username}</p>
-                        <button className='btn' onClick={() => signOut()}>Signout</button>
-                    </>
+                    <button className='btn' onClick={() => signOut()}>Signout</button>
                 ) : (
                     <>
                         <button className='btn' onClick={() => signIn()}>Signin</button>

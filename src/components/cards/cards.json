@@ -3,17 +3,17 @@
         {
             "title": "Add a Connection",
             "description": "Enable your application users to log in using a standard-based identity provider.",
-            "link": ""
+            "link": "https://wso2.com/asgardeo/docs/guides/authentication/#manage-connections"
         },
         {
             "title": "Enable Multifactor Authentication",
             "description": "Add strong authentication to your application by enabling multiple authentication factors.",
-            "link": ""
+            "link": "https://wso2.com/asgardeo/docs/guides/authentication/mfa/"
         },
         {
             "title": "Guides",
             "description": "The guides provide the instructions for building IAM uses cases.",
-            "link": ""
+            "link": "https://wso2.com/asgardeo/docs/guides/"
         }
     ]
 }

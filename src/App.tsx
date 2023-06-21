@@ -1,4 +1,5 @@
 import './App.css';
+import { useAuthContext } from "@asgardeo/auth-react";
 import Nav from './components/nav/nav';
 import Profile from './components/profile/profile';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
@@ -8,6 +9,9 @@ import { ResourcesPage } from './pages/resources';
 import Footer from './components/footer/footer';
 
 function App() {
+  const { state } = useAuthContext();
+
+  console.log(state);
 
   return (
     <Router>
@@ -17,6 +21,11 @@ function App() {
             <div>
                 <h1>Jump to the start pack</h1>
                 <p className='p-description'>This application demonstrates the authentication flow using React and Asgardeo.</p>
+                { state.isAuthenticated && 
+                    <>
+                        <p>Hello <b>{state?.username}</b>!</p>
+                    </>
+                }
             </div>
             </header>
             <Routes>
