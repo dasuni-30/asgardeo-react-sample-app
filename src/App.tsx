@@ -17,17 +17,6 @@ function App() {
     <Router>
         <div className="App">
             <Nav></Nav>
-            <header className="App-header">
-            <div>
-                <h1>Jump to the start pack</h1>
-                <p className='p-description'>This application demonstrates the authentication flow using React and Asgardeo.</p>
-                { state.isAuthenticated && 
-                    <>
-                        <p>Hello <b>{state?.username}</b>!</p>
-                    </>
-                }
-            </div>
-            </header>
             <Routes>
                 <Route path="/" element={ <HomePage /> } />
                 <Route path="/profile" element={ <Profile /> } />

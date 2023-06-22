@@ -22,7 +22,21 @@
   font-size: calc(10px + 2vmin);
   color: rgb(0, 0, 0);
   height: 400px;
-  border-bottom: 1px solid #b3b0b085;
+  border-bottom: 1px solid #b3b0b01b;
+}
+
+.App-section {
+  background-color: #fcfdfd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgb(0, 0, 0);
+  padding: 10px;
+}
+
+.App-section label {
+  font-size: small;
 }
 
 .App-link {
@@ -46,7 +60,9 @@
 }
 
 .App h1 {
-  font-family: "Verdana";
+  font-family: Verdana, sans-serif;
+  font-weight: 500;
+  font-size: xx-large;
 }
 
 .p-description {
@@ -81,6 +97,7 @@
 .user-profile-table {
   margin-left: auto;
   margin-right: auto;
+  overflow-y: scroll;
 }
 
 th, td {
@@ -92,7 +109,6 @@ th, td {
 
 .navbar {
   display: flex;
-  border-bottom: 1px solid #b3b0b085;
   background: #F7F7F7;
 }
 
@@ -103,27 +119,31 @@ th, td {
 }
 
 .right-panel {
-  width: 60%;
+  width: 80%;
   padding: 10px;
+  text-align: right;
+  margin-left: 10px;
 }
 
 .left-panel {
-  width: 30%;
+  width: 15%;
   padding: 10px;
-  align-items: right;
+  text-align: center;
 }
 
 .center-panel {
   width: 10%;
-  padding: 1px;
+  padding: 20px;
+  text-align: left;
 }
 
 * {
-  font-family: "Verdana";
+  font-family: Verdana, sans-serif;
 }
 
 body {
-  font-family: "Verdana";
+  font-family: Verdana, sans-serif;
+  overflow-y: scroll;
 }
 
 /* Float four columns side by side */
@@ -155,11 +175,10 @@ body {
 
 /* Style the counter cards */
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 1px;
+  padding: 15px;
   text-align: center;
-  background-color: #f1f1f1;
-  height: 225px;
+  background: #F7F7F7;
+  height: 175px;
 }
 
 .card a{
@@ -167,9 +186,19 @@ body {
   color: #e06d1b;
 }
 
+.card h3{
+  font-size: medium;
+}
+
+.card p{
+  font-size: small;
+}
+
+h3 {
+  font-weight: 500;
+}
+
 .footer {
-  padding: 1%;
-  border-top: 1px solid #b3b0b085;
   background: #F7F7F7;
   position: fixed;
   bottom: 0;
@@ -179,6 +208,11 @@ body {
 .footer a {
   text-decoration: none;
   color: #000;
+  font-size: small;
+}
+
+.footer p {
+  font-size: small;
 }
 
 @media (max-width: 400px) {
@@ -202,7 +236,12 @@ body {
 }
 
 .react-logo-image {
-  width: 30%;
+  width: 10%;
+  padding: 10px;
+}
+
+.asgardeo-logo-image {
+  width: 70%;
   padding: 10px;
 }
 
@@ -213,5 +252,39 @@ body {
   padding: 5px 10px;
   font-size: 16px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 500rem;
+}
+
+.notification {
+  display: none;
+  background-color: #f2f2f2;
+  color: #333;
+  padding: 10px;
+}
+
+.notification p {
+  margin: 0;
+}
+
+.notification.show {
+  display: block;
+}
+
+pre {
+  background-color: #f4f4f4;
+  padding: 10px;
+  overflow: auto;
+  width: 60%;
+  align-items: center;
+  text-align: left;
+  font-size: small;
+}
+
+code {
+  font-family: Consolas, Monaco, 'Courier New', monospace;
+  white-space: nowrap;
+}
+
+.tr-padding {
+  padding: 50px;
 }

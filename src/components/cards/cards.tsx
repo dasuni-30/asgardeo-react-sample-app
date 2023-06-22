@@ -18,8 +18,8 @@ const Cards: React.FunctionComponent<{}> = () => {
                     <div className="column">
                         <div className="card">
                             <h3>{ card?.title }</h3>
-                            <p>{card?.description}</p>
-                            <p>
+                            <p className='p-description'>{card?.description}</p>
+                            <p className='p-description'>
                                 <a href={card?.link} target='_blank'>Learn More</a>
                             </p>
                         </div>

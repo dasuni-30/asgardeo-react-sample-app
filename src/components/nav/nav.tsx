@@ -1,32 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import * as data from './links.json';
 import ASGARDEO_LOGO from "../../images/asgardeo-logo-transparent.png";
 import routesConfig from '../../configs/routes-config';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '@asgardeo/auth-react';
-
-const linksString = JSON.stringify(data);
-const links = JSON.parse(linksString).links;
-
-type Link = {
-    label: string;
-    href: string;
-};
-
-const Links: React.FunctionComponent<{ links: Link[] }> = ({ links }) => {
-    
-    return (
-        <>
-            {links.map((link: Link) => {
-                return (
-                    <a href={link.href}>
-                        {link.label}
-                    </a>
-                )
-            })}
-        </>
-    )
-};
 
 const Nav: React.FunctionComponent<{}> = () => {
     const { state, signIn, signOut } = useAuthContext();
@@ -44,6 +20,11 @@ const Nav: React.FunctionComponent<{}> = () => {
         navigate(path);
     }
 
+    const routeHomeChange = () =>{ 
+        let path = routesConfig.home; 
+        navigate(path);
+    }
+
     // Filter the cutsom scope from the allowed scopes.
     useEffect(() => {
         if (state.isAuthenticated && state?.allowedScopes?.includes("read_profile")) {
@@ -55,21 +36,20 @@ const Nav: React.FunctionComponent<{}> = () => {
         <div className="navbar">
             <div className="left-panel">
                 <div onClick={() => navigate(routesConfig.home)}>
-                    <img alt="react-logo" src={ ASGARDEO_LOGO } className="react-logo-image"/>
+                    <img alt="react-logo" src={ ASGARDEO_LOGO } className="asgardeo-logo-image"/>
                 </div>
             </div>
             <div className="center-panel">
-                <h3>Start Pack</h3>
+                <a href="" onClick={routeHomeChange}>Home</a>
             </div>
              <div className="right-panel">
                 { 
                     state.isAuthenticated
                     && <a href="" onClick={routeProfileChange}>Profile</a>
                 }
-                <Links links={links} />
                 {
                     isResourcesAllowed
-                    && <a href="" onClick={routeResourcesChange}>Resources</a>
+                    && <a href="" onClick={routeResourcesChange}>External API</a>
                 }
                 { state.isAuthenticated ? (
                     <button className='btn' onClick={() => signOut()}>Signout</button>

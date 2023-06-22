@@ -1,4 +1,5 @@
 import { FunctionComponent, ReactElement } from "react";
+import Copy from "../components/copy/copy";
 
 /**
  * Home page for the Sample.
@@ -10,8 +11,9 @@ import { FunctionComponent, ReactElement } from "react";
 export const ResourcesPage: FunctionComponent = (): ReactElement => {
 
     return (
-    <div className="App">
-        <h1>Hello</h1>
+    <div className="App-section">
+        <h1>External API</h1>
+        <Copy></Copy>
     </div>
     );
 };
