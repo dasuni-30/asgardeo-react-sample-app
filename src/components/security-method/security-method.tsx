@@ -9,6 +9,7 @@ const SecurityMethod: React.FunctionComponent<{}> = () => {
         <div className="App-section">
             <form onSubmit={handleSubmit}>
                 <h3>Security Methods</h3>
+                <p className="p-description">Secure your account by setting two factor authentication.</p>
                 <table className="user-profile-table">
                 <tr>
                 <label>Second Factor Authentication: </label>

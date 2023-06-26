@@ -10,6 +10,9 @@ const Nav: React.FunctionComponent<{}> = () => {
 
     const navigate = useNavigate();
 
+    const signUpURL = "https://accounts.asgardeo.io/t/dasuorg/accountrecoveryendpoint/register.do?client_id="
+        + "8_0QVgk0nf5Lij6C2IIdsY4Jhl0a" + "&sp=" + "React App";
+
     const routeProfileChange = () =>{ 
         let path = routesConfig.profile; 
         navigate(path);
@@ -56,7 +59,7 @@ const Nav: React.FunctionComponent<{}> = () => {
                 ) : (
                     <>
                         <button className='btn' onClick={() => signIn()}>Signin</button>
-                        <a href='https://accounts.asgardeo.io/t/dasuorg/accountrecoveryendpoint/register.do?client_id='>
+                        <a href={signUpURL}>
                             <button className='btn'>Signup</button>
                         </a>
                     </>

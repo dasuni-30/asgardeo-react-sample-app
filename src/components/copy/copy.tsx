@@ -1,27 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { getUserDetails } from '../../api/user-info';
 
-const copyButton = document.getElementById('copyButton');
-const textArea = document.getElementById('textArea');
 
 const Copy: React.FunctionComponent<{}> = () => {
+    const [ userInfo, setUserInfo ] = useState<any>();
+
     const message = 
-    `curl --request PATCH
-    --url https://api.asgardeo.io/t/%7Borganization-name%7D/scim2/Me
-    --header 'Accept: application/scim+json'
-    --header 'Content-Type: application/scim+json'
-    --data '{
-    "schemas": [
-      "urn:ietf:params:scim:api:messages:2.0:PatchOp"
-    ],
-    "Operations": [
-      {
-        "op": "add",
-        "value": {
-          "nickName": "shaggy"
-        }
+    `curl --request GET
+  --url https://api.asgardeo.io/t/%7Borganization-name%7D/scim2/Me
+  --header 'Accept: application/scim+json'`;
+
+  const handleApiCall = () => {
+    (async () => {
+      try {
+        const response = await getUserDetails();
+        console.log(response);
+        setUserInfo(response);
+      } catch (error) {
+        console.log(error);
       }
-    ]
-  }'`;
+    })();
+  };
 
   function copyContent() {
     const contentToCopy = document.getElementById('contentToCopy');
@@ -42,12 +41,17 @@ const Copy: React.FunctionComponent<{}> = () => {
   
     return (
         <>
+        <h3>API Request: </h3>
         <pre id="contentToCopy">
             {message}
         </pre>
-        <button id="copyButton">Ping API</button>
+        <button id="copyButton" onClick={handleApiCall}>Ping API</button>
         <br/>
         <button id="copyButton" onClick={copyContent}>Copy</button>
+        <h3>Output: </h3>
+        <pre id="contentToCopy">
+            {JSON.stringify(userInfo, null, 2)}
+        </pre>
         </>
     )
 }

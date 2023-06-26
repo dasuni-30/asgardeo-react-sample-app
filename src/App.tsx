@@ -1,15 +1,17 @@
 import './App.css';
-import { useAuthContext } from "@asgardeo/auth-react";
 import Nav from './components/nav/nav';
 import Profile from './components/profile/profile';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { HomePage } from './pages/home';
 import { NotFoundPage } from './pages/404';
 import { ResourcesPage } from './pages/resources';
 import Footer from './components/footer/footer';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useAuthContext } from '@asgardeo/auth-react';
+// import { SecureRoute, useAuthContext } from "@asgardeo/auth-react";
+// import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 function App() {
-  const { state } = useAuthContext();
+  const { state, signIn } = useAuthContext();
 
   console.log(state);
 
@@ -23,9 +25,27 @@ function App() {
                 <Route path="/resource" element={ <ResourcesPage /> } />
                 <Route element={ <NotFoundPage /> } />
             </Routes>
-            <Footer/>
-        </div>
+            <Footer />
+          </div>
+          
         </Router>
+    
+    // <Router>
+    //         <Switch>
+    //             <Route exact path="/home" component={ HomePage } />
+    //             <SecureRoute
+    //                 path="/secure-page"
+    //                 component={ SecurePageComponent } 
+    //                 callback={ () => {
+    //                     // Fires when the user is not authenticated.
+    //                     // Will be directed to sign in.
+    //                     signIn();
+    //                 }}
+    //             />
+    //             <Route component={NotFoundPage} />
+    //         </Switch>
+    //     </Router>
+
   );
 }
 
