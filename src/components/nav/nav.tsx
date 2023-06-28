@@ -10,8 +10,7 @@ const Nav: React.FunctionComponent<{}> = () => {
 
     const navigate = useNavigate();
 
-    const signUpURL = "https://accounts.asgardeo.io/t/dasuorg/accountrecoveryendpoint/register.do?client_id="
-        + "8_0QVgk0nf5Lij6C2IIdsY4Jhl0a" + "&sp=" + "React App";
+    const signUpURL = `${process.env.REACT_APP_SIGN_UP_URL}` + `${process.env.REACT_APP_CLIENT_ID}` + "&sp=" + `${process.env.REACT_APP_APPLICATION_NAME}`;
 
     const routeProfileChange = () =>{ 
         let path = routesConfig.profile; 
@@ -28,7 +27,7 @@ const Nav: React.FunctionComponent<{}> = () => {
         navigate(path);
     }
 
-    // Filter the cutsom scope from the allowed scopes.
+    // Filter the custom scope from the allowed scopes.
     useEffect(() => {
         if (state.isAuthenticated && state?.allowedScopes?.includes("read_profile")) {
             setIsResourcesAllowed(true);
@@ -52,7 +51,7 @@ const Nav: React.FunctionComponent<{}> = () => {
                 }
                 {
                     isResourcesAllowed
-                    && <a href="" onClick={routeResourcesChange}>External API</a>
+                    && <a href="" onClick={routeResourcesChange}>API Call</a>
                 }
                 { state.isAuthenticated ? (
                     <button className='btn' onClick={() => signOut()}>Signout</button>

@@ -12,7 +12,8 @@ export const ResourcesPage: FunctionComponent = (): ReactElement => {
 
     return (
     <div className="App-section">
-        <h1>External API</h1>
+        <h3>API Call</h3>
+        <p className="p-description">Ping an API by clicking on the button below.</p>
         <Copy></Copy>
     </div>
     );

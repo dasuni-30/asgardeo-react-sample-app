@@ -1,9 +1,0 @@
-{
-    "baseUrl": "https://api.asgardeo.io/t/dasuorg",
-    "clientID": "J5rz9e5q5DMVB6a9mksdQSXxe3ca",
-    "scope": [
-        "openid", "profile"
-    ],
-    "signInRedirectURL": "https://localhost:3000",
-    "signOutRedirectURL": "https://localhost:3000"
-}

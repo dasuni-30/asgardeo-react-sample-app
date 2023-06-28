@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { getUserDetails } from '../../api/user-info';
+import endpointConfig from '../../configs/endpoint-config';
 
 
 const Copy: React.FunctionComponent<{}> = () => {
     const [ userInfo, setUserInfo ] = useState<any>();
 
+    const meEndpoint = `${endpointConfig.api.endpoints.me}`;
+
     const message = 
-    `curl --request GET
-  --url https://api.asgardeo.io/t/%7Borganization-name%7D/scim2/Me
-  --header 'Accept: application/scim+json'`;
+    `curl --request GET --url \n`
+    + meEndpoint
+    + `\n`
+    + `--header 'Accept: application/scim+json'`;
 
   const handleApiCall = () => {
     (async () => {
@@ -41,14 +45,20 @@ const Copy: React.FunctionComponent<{}> = () => {
   
     return (
         <>
-        <h3>API Request: </h3>
+        <h3>API Request</h3>
         <pre id="contentToCopy">
             {message}
         </pre>
-        <button id="copyButton" onClick={handleApiCall}>Ping API</button>
-        <br/>
-        <button id="copyButton" onClick={copyContent}>Copy</button>
-        <h3>Output: </h3>
+        <div className='container'>
+            <div className='column'>
+                <button className='button' onClick={handleApiCall}>Ping</button>
+            </div>
+            <br/>
+            <div className='column'>
+                <button className='button' onClick={copyContent}>Copy</button>
+            </div>
+        </div>
+        <h3>Output</h3>
         <pre id="contentToCopy">
             {JSON.stringify(userInfo, null, 2)}
         </pre>
