@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import ASGARDEO_LOGO from "../../images/asgardeo-logo-transparent.png";
-import routesConfig from '../../configs/routes-config';
+import ASGARDEO_LOGO from '../images/asgardeo-logo-transparent.png';
+import routesConfig from '../configs/routes-config';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '@asgardeo/auth-react';
 
@@ -10,7 +10,7 @@ const Nav: React.FunctionComponent<{}> = () => {
 
     const navigate = useNavigate();
 
-    const signUpURL = `${process.env.REACT_APP_SIGN_UP_URL}` + `${process.env.REACT_APP_CLIENT_ID}` + "&sp=" + `${process.env.REACT_APP_APPLICATION_NAME}`;
+    const signUpURL = `${process.env.REACT_APP_SIGN_UP_URL}` + `${process.env.REACT_APP_CLIENT_ID}` + '&sp=' + `${process.env.REACT_APP_APPLICATION_NAME}`;
 
     const routeProfileChange = () =>{ 
         let path = routesConfig.profile; 
@@ -29,29 +29,29 @@ const Nav: React.FunctionComponent<{}> = () => {
 
     // Filter the custom scope from the allowed scopes.
     useEffect(() => {
-        if (state.isAuthenticated && state?.allowedScopes?.includes("read_profile")) {
+        if (state.isAuthenticated && state?.allowedScopes?.includes('read_profile')) {
             setIsResourcesAllowed(true);
         } 
     }, [state]);
 
     return (
-        <div className="navbar">
-            <div className="left-panel">
+        <div className='navbar'>
+            <div className='left-panel'>
                 <div onClick={() => navigate(routesConfig.home)}>
-                    <img alt="react-logo" src={ ASGARDEO_LOGO } className="asgardeo-logo-image"/>
+                    <img alt='react-logo' src={ ASGARDEO_LOGO } className='asgardeo-logo-image'/>
                 </div>
             </div>
-            <div className="center-panel">
-                <a href="" onClick={routeHomeChange}>Home</a>
+            <div className='center-panel'>
+                <a href='' onClick={routeHomeChange}>Home</a>
             </div>
-             <div className="right-panel">
+             <div className='right-panel'>
                 { 
                     state.isAuthenticated
-                    && <a href="" onClick={routeProfileChange}>Profile</a>
+                    && <a href='' onClick={routeProfileChange}>Profile</a>
                 }
                 {
                     isResourcesAllowed
-                    && <a href="" onClick={routeResourcesChange}>API Call</a>
+                    && <a href='' onClick={routeResourcesChange}>API Call</a>
                 }
                 { state.isAuthenticated ? (
                     <button className='btn' onClick={() => signOut()}>Signout</button>

@@ -1,5 +1,5 @@
-import { FunctionComponent, ReactElement } from "react";
-import { useNavigate } from "react-router-dom";
+import { FunctionComponent, ReactElement } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * Page to display for 404.
@@ -17,7 +17,7 @@ export const NotFoundPage: FunctionComponent = (): ReactElement => {
             <h3>
                 404: Page not found
             </h3>
-            <button className="btn primary" onClick={() => { navigate("/") }}>Go back to home</button>
+            <button className='btn primary' onClick={() => { navigate('/') }}>Go back to home</button>
         </>
     );
 };

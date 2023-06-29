@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { getUserDetails } from '../../api/user-info';
-import endpointConfig from '../../configs/endpoint-config';
+import { getUserDetails } from '../api/user-info';
+import endpointConfig from '../configs/endpoint-config';
 
 
 const Copy: React.FunctionComponent<{}> = () => {
@@ -18,10 +18,9 @@ const Copy: React.FunctionComponent<{}> = () => {
     (async () => {
       try {
         const response = await getUserDetails();
-        console.log(response);
         setUserInfo(response);
       } catch (error) {
-        console.log(error);
+        // Log the error.
       }
     })();
   };
@@ -29,7 +28,6 @@ const Copy: React.FunctionComponent<{}> = () => {
   function copyContent() {
     const contentToCopy = document.getElementById('contentToCopy');
     const textToCopy: string = String(contentToCopy?.innerText);
-    console.log(textToCopy);
 
     navigator.clipboard.writeText
                 (textToCopy)
@@ -46,7 +44,7 @@ const Copy: React.FunctionComponent<{}> = () => {
     return (
         <>
         <h3>API Request</h3>
-        <pre id="contentToCopy">
+        <pre id='contentToCopy'>
             {message}
         </pre>
         <div className='container'>
@@ -59,7 +57,7 @@ const Copy: React.FunctionComponent<{}> = () => {
             </div>
         </div>
         <h3>Output</h3>
-        <pre id="contentToCopy">
+        <pre id='contentToCopy'>
             {JSON.stringify(userInfo, null, 2)}
         </pre>
         </>
