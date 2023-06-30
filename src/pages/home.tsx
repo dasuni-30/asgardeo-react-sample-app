@@ -10,7 +10,7 @@ import { useAuthContext } from '@asgardeo/auth-react';
  *
  * @return {React.ReactElement}
  */
-export const HomePage: FunctionComponent = (): ReactElement => {
+export const Home: FunctionComponent = (): ReactElement => {
 
     const { state } = useAuthContext();
 

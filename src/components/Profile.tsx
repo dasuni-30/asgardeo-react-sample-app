@@ -3,12 +3,12 @@ import { ChangeEvent, useEffect, useState } from 'react';
 import $ from 'jquery'
 
 interface FormValues {
-  username: string;
-  email: string;
-  givenName: string;
-  lastName: string;
-  id: string;
-  mfa: string;
+  username?: string;
+  email?: string;
+  givenName?: string;
+  lastName?: string;
+  id?: string;
+  mfa?: string;
 }
 
 const initialFormValues: FormValues = {
@@ -47,7 +47,7 @@ const Profile: React.FunctionComponent = () => {
         lastName: userInfo?.name?.familyName,
         id: userInfo?.id,
         mfa: JSON.parse(userInfo?.[SCHEMA]?.preferredMFAOption)?.authenticationOption});
-      $('select[name="mfa"]').val(JSON.parse(userInfo?.[SCHEMA]?.preferredMFAOption)?.authenticationOption);
+      $("select[name='mfa']").val(JSON.parse(userInfo?.[SCHEMA]?.preferredMFAOption)?.authenticationOption);
     }
   },[ userInfo ]);
 
@@ -73,7 +73,7 @@ const Profile: React.FunctionComponent = () => {
       ...userInfo,
       userName: `DEFAULT/${userInfo?.userName?.split('/')[1]}`,
       name: { familyName: formValues?.lastName, givenName: formValues?.givenName },
-      [SCHEMA]: { ...userInfo?.[SCHEMA], preferredMFAOption: '{\'authenticationOption\':\''+ formValues?.mfa + '\'}'}
+      [SCHEMA]: { ...userInfo?.[SCHEMA], preferredMFAOption: "{\"authenticationOption\":\""+ formValues?.mfa + "\"}"}
     };
     try {
       updateUserDetails(_formData);

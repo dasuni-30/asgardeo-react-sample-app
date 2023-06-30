@@ -1,9 +1,9 @@
 import './App.css';
 import Nav from './components/Nav';
 import Profile from './components/Profile';
-import { HomePage } from './pages/Home';
-import { NotFoundPage } from './pages/404';
-import { ResourcesPage } from './pages/Resources';
+import { Home } from './pages/Home';
+import { NotFound } from './pages/NotFound';
+import { Resources } from './pages/Resources';
 import Footer from './components/Footer';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { AuthenticatedComponent } from '@asgardeo/auth-react';
@@ -15,12 +15,12 @@ function App() {
         <div className='App'>
             <Nav></Nav>
             <Routes>
-                <Route path='/' element={ <HomePage /> } />
+                <Route path='/' element={ <Home/> } />
                 <Route
                     path='/profile'
                     element={
                         <AuthenticatedComponent
-                            fallback={ <HomePage/> }
+                            fallback={ <Home/> }
                         >
                             <Profile />
                         </AuthenticatedComponent>
@@ -30,13 +30,13 @@ function App() {
                     path='/resource'
                     element={ 
                         <AuthenticatedComponent
-                            fallback={ <HomePage/> }
+                            fallback={ <Home/> }
                         >
-                            <ResourcesPage />
+                            <Resources />
                         </AuthenticatedComponent>
                     }
                 />
-                <Route path='*' element={ <NotFoundPage /> } />
+                <Route path='*' element={ <NotFound /> } />
             </Routes>
             <Footer />
           </div>

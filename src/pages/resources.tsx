@@ -8,7 +8,7 @@ import Copy from '../components/Copy';
  *
  * @return {React.ReactElement}
  */
-export const ResourcesPage: FunctionComponent = (): ReactElement => {
+export const Resources: FunctionComponent = (): ReactElement => {
 
     return (
         <div className='App-section'>

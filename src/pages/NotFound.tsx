@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
  *
  * @return {React.ReactElement}
  */
-export const NotFoundPage: FunctionComponent = (): ReactElement => {
+export const NotFound: FunctionComponent = (): ReactElement => {
 
     const navigate = useNavigate();
 
