@@ -38,7 +38,7 @@ const Cards: React.FunctionComponent<{}> = () => {
                             <h3>{ card?.title }</h3>
                             <p className='p-description'>{card?.description}</p>
                             <p className='p-description'>
-                                <a href={card?.link} target='_blank'>Learn More</a>
+                                <a href={card?.link} target='_blank' rel="noreferrer">Learn More</a>
                             </p>
                         </div>
                     </div>

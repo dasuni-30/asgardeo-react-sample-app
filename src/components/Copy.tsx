@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { getUserDetails } from '../api/user-info';
 import endpointConfig from '../configs/endpoint-config';
 
