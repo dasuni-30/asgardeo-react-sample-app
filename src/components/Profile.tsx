@@ -46,8 +46,11 @@ const Profile: React.FunctionComponent = () => {
         givenName: userInfo?.name?.givenName,
         lastName: userInfo?.name?.familyName,
         id: userInfo?.id,
-        mfa: JSON.parse(userInfo?.[SCHEMA]?.preferredMFAOption)?.authenticationOption});
-      $("select[name='mfa']").val(JSON.parse(userInfo?.[SCHEMA]?.preferredMFAOption)?.authenticationOption);
+        mfa: userInfo?.[SCHEMA]?.preferredMFAOption != null && JSON.parse(userInfo?.[SCHEMA]?.preferredMFAOption)?.authenticationOption});
+
+      if (userInfo?.[SCHEMA]?.preferredMFAOption != null ) {
+        $("select[name='mfa']").val(JSON.parse(userInfo?.[SCHEMA]?.preferredMFAOption)?.authenticationOption);
+      }
     }
   },[ userInfo ]);
 

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '@asgardeo/auth-react';
 
 const Nav: React.FunctionComponent<{}> = () => {
-    const { state, signIn, signOut, getIDToken } = useAuthContext();
+    const { state, signIn, signOut, getDecodedIDToken } = useAuthContext();
     const [ isResourcesAllowed, setIsResourcesAllowed ] = useState<boolean>();
 
     const navigate = useNavigate();
@@ -27,22 +27,16 @@ const Nav: React.FunctionComponent<{}> = () => {
         navigate(path);
     }
 
+    // Filter the display of API Call section based on the application role.
     useEffect(() => {
-        console.log("state");
-        getIDToken().then((decodedIdToken) => {
-            console.log(decodedIdToken);
-            setIsResourcesAllowed(true);
+        getDecodedIDToken().then((decodedIdToken) => {
+            if (decodedIdToken?.application_roles === "React-App-Manager") {
+                setIsResourcesAllowed(true);
+            }
         }).catch((error) => {
-            //console.log(error);
+            
         })
-    }, [getIDToken, state]);
-
-    // Filter the custom scope from the allowed scopes.
-    // useEffect(() => {
-    //     if (state.isAuthenticated && state?.allowedScopes?.includes('read_profile')) {
-    //         setIsResourcesAllowed(true);
-    //     } 
-    // }, [state]);
+    }, [getDecodedIDToken, state]);
 
     return (
         <div className='navbar'>
@@ -52,16 +46,16 @@ const Nav: React.FunctionComponent<{}> = () => {
                 </div>
             </div>
             <div className='center-panel'>
-                <a href='null' onClick={routeHomeChange}>Home</a>
+                <a href='#/' onClick={routeHomeChange}>Home</a>
             </div>
              <div className='right-panel'>
                 { 
                     state.isAuthenticated
-                    && <a href='null' onClick={routeProfileChange}>Profile</a>
+                    && <a href='#/' onClick={routeProfileChange}>Profile</a>
                 }
                 {
                     isResourcesAllowed
-                    && <a href='null' onClick={routeResourcesChange}>API Call</a>
+                    && <a href='#/' onClick={routeResourcesChange}>API Call</a>
                 }
                 { state.isAuthenticated ? (
                     <button className='btn' onClick={() => signOut()}>Signout</button>
