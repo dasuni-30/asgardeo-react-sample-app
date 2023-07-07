@@ -49,7 +49,7 @@ REACT_APP_ASGARDEO_BASE_URL=<add-asgardeo-org-base-url-here>
 REACT_APP_SIGN_UP_URL=<asgardeo-sign-up-url>
 
 # The application name for the Asgardeo application
-REACT_APP_APPLICATION_NAME="application-name"
+REACT_APP_APPLICATION_NAME=<application-name>
 ```
 
 5. Start the development server.
