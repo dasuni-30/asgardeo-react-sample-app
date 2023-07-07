@@ -12,19 +12,19 @@ A live preview of this demo is available at
 git clone https://github.com/dasuni-30/asgardeo-react-sample-app.git
 ```
 
-3. Install the dependencies.
+2. Install the dependencies.
 
 ```bash
 npm install
 ```
 
-4. Create a `.env` file based on the `.env.example` file.
+3. Create a `.env` file based on the `.env.example` file.
 
 ```bash
 cp .env.example .env
 ```
 
-5. Update the values in the `.env` file based on your requirements.
+4. Update the values in the `.env` file based on your requirements.
 
 ```bash
 # The port number on which the client application will run
