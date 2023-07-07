@@ -1,46 +1,61 @@
-# Getting Started with Create React App
+## 👀 Live Deployment
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A live preview of this demo is available at
+1. Vercel: [https://asgardeo-react-sample-app.vercel.app](https://asgardeo-react-sample-app.vercel.app)
+2. Netlify: [https://kaleidoscopic-medovik-1bf3fc.netlify.app](https://kaleidoscopic-medovik-1bf3fc.netlify.app)
 
-## Available Scripts
+## 🚀 Getting Started
 
-In the project directory, you can run:
+1. Clone the repository.
 
-### `npm start`
+```bash
+git clone https://github.com/dasuni-30/asgardeo-react-sample-app.git
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+3. Install the dependencies.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+npm install
+```
 
-### `npm test`
+4. Create a `.env` file based on the `.env.example` file.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+cp .env.example .env
+```
 
-### `npm run build`
+5. Update the values in the `.env` file based on your requirements.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+# The port number on which the client application will run
+PORT=3000
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# The base URL of the server's API that the client application will communicate with
+# E.g., http://localhost:5000
+REACT_APP_API_ENDPOINT=<add-server-api-url>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# The client ID for the Asgardeo Single Page Application (SPA) app
+REACT_APP_CLIENT_ID=<add-asgardeo-spa-app-client-id-here>
 
-### `npm run eject`
+# The base URL for the client application
+# E.g., http://localhost:3000
+REACT_APP_CLIENT_BASE_URL=<add-client-app-base-url-here>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# The base URL for the Asgardeo organization's API
+# E.g., https://api.asgardeo.io/t/your-org
+REACT_APP_ASGARDEO_BASE_URL=<add-asgardeo-org-base-url-here>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# The sign-up URL for the Asgardeo organization
+REACT_APP_SIGN_UP_URL=<asgardeo-sign-up-url>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# The application name for the Asgardeo application
+REACT_APP_APPLICATION_NAME="application-name"
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+5. Start the development server.
 
-## Learn More
+```bash
+npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+This will start the app on [http://localhost:3000](http://localhost:3000).
