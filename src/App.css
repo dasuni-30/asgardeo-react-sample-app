@@ -14,6 +14,32 @@
 }
 
 .App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Custom Styles */
+
+.App-header-section {
   background-color: #fcfdfd;
   display: flex;
   flex-direction: column;
@@ -43,10 +69,6 @@
   font-weight: 600;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
 .image-icon {
   height: 60%;
   margin: 10px;
@@ -64,7 +86,7 @@
 }
 
 .App h1 {
-  font-family: Verdana, sans-serif;
+  font-family: Inter;
   font-weight: 500;
   font-size: xx-large;
 }
@@ -114,7 +136,7 @@ th, td {
 
 .navbar {
   display: flex;
-  background: #F7F7F7;
+  background: #F7F8FB;
 }
 
 .navbar a {
@@ -125,10 +147,11 @@ th, td {
 }
 
 .right-panel {
-  width: 80%;
+  width: 50%;
   padding: 10px;
   text-align: right;
   margin-left: 10px;
+  float: left;
 }
 
 .left-panel {
@@ -138,17 +161,17 @@ th, td {
 }
 
 .center-panel {
-  width: 10%;
+  width: 40%;
   padding: 15px;
   text-align: left;
 }
 
 * {
-  font-family: Verdana, sans-serif;
+  font-family: Inter;
 }
 
 body {
-  font-family: Verdana, sans-serif;
+  font-family: Inter;
   overflow-y: scroll;
 }
 
@@ -183,17 +206,20 @@ body {
 .card {
   padding: 15px;
   text-align: center;
-  background: #F7F7F7;
+  background: #ffffff;
   height: 175px;
+  border: 1px solid #1591EB;
+  border-radius: 0.5rem;
 }
 
 .card a{
   text-decoration: none;
-  color: #e06d1b;
+  color: #1591EB;
 }
 
 .card h3{
   font-size: medium;
+  color: #1591EB;
 }
 
 .card p{
@@ -205,8 +231,8 @@ h3 {
 }
 
 .footer {
-  background: #F7F7F7;
-  position: fixed;
+  background: #F7F8FB;
+  position: relative;
   bottom: 0;
   width: 100%;
 }
@@ -232,15 +258,6 @@ h3 {
   }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .react-logo-image {
   width: 10%;
   padding: 10px;
@@ -252,14 +269,31 @@ h3 {
 }
 
 .btn {
-  border: 2px solid #e06d1b7b;
-  background-color: white;
-  color: black;
+  border: 2px solid #1591EB;
+  background-color: #1591EB;
+  color: rgb(255, 255, 255);
   padding: 5px 10px;
   font-size: 16px;
   cursor: pointer;
   border-radius: 500rem;
   font-size: small;
+  width: 100px;
+}
+
+.outline {
+
+}
+
+.btn-outline {
+  border: 2px solid #1591EB;
+  background-color: #ffffff;
+  color: #1591EB;
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 500rem;
+  font-size: small;
+  width: 100px;
 }
 
 .notification {
@@ -278,10 +312,10 @@ h3 {
 }
 
 pre {
-  background-color: #f4f4f4;
+  background-color: #F5F5F8;
   border: 1px solid #ccc;
   padding: 20px;
-  font-family: 'Courier New', monospace;
+  font-family: Inter;
   font-size: 14px;
   line-height: 1.4;
   overflow-x: auto;
@@ -293,7 +327,7 @@ pre {
 }
 
 code {
-  font-family: Consolas, Monaco, 'Courier New', monospace;
+  font-family: Inter;
   white-space: nowrap;
 }
 
@@ -324,7 +358,7 @@ code {
   font-weight: bold;
   text-align: center;
   text-decoration: none;
-  background-color: #e06d1b;
+  background-color: #1591EB;
   color: white;
   border: none;
   border-radius: 4px;
@@ -332,9 +366,60 @@ code {
 }
 
 .button:hover {
-  background-color: #e06d1b;
+  background-color: #1591EB;
 }
 
 .button:active {
-  background-color: #e06d1b;
+  background-color: #1591EB;
 }
+
+/* Styles for the input box */
+input {
+  /* Set width and height */
+  width: 200px;
+  height: 20px;
+
+  /* Add some padding for better appearance */
+  padding: 5px;
+
+  /* Border styles */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+
+  /* Font styles */
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+
+  /* Text color and background color */
+  color: #333;
+  background-color: #fff;
+
+  /* Cursor style */
+  cursor: text;
+
+  /* Remove default browser appearance */
+  outline: none;
+}
+
+/* Hover effect */
+input:hover {
+  border-color: #999;
+}
+
+/* Focus effect */
+input:focus {
+  border-color: #1591EB;
+}
+
+.App-header-sub-section {
+  background-color: #F7F8FB;
+  min-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: rgb(0, 0, 0);
+  width: 100%;
+}
+

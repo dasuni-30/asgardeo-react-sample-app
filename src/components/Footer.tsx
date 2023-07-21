@@ -4,6 +4,9 @@ import React from 'react';
 let date: Date = new Date();  
 let year = date.getFullYear();
 
+/**
+ * Footer component.
+ */
 const Footer: React.FunctionComponent<{}> = () => {
     return (
         <div className='footer'>

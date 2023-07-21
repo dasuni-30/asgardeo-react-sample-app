@@ -1,10 +1,13 @@
 import {AsgardeoSPAClient} from '@asgardeo/auth-react';
 import endpointConfig from '../configs/endpoint-config';
 
-const endpoint = `${endpointConfig.api.endpoints.me}`;
+const meEndpoint = `${endpointConfig.api.endpoints.me}`;
 
 const auth: any = AsgardeoSPAClient.getInstance();
 
+/**
+ * API Call to fetch user details.
+ */
 export const getUserDetails = () => {
 
     const requestConfig = {
@@ -13,7 +16,7 @@ export const getUserDetails = () => {
             "Content-Type": "application/scim+json"
         },
         method: "GET",
-        url: endpoint
+        url: meEndpoint
     };
 
     return auth.httpRequest(requestConfig)
@@ -21,13 +24,14 @@ export const getUserDetails = () => {
         return response.data;
     })
     .catch((error: any) => {
-        throw new Error('Failed to fetch user profile');
+        throw new Error('Failed to fetch user profile.');
     });
 };
 
-
+/**
+ * API Call to update user details.
+ */
 export async function updateUserDetails(body: any) {
-    const endpoint = `${endpointConfig.api.endpoints.me}`;
 
     const requestConfig = {
         headers: {
@@ -36,7 +40,7 @@ export async function updateUserDetails(body: any) {
         },
         method: "PUT",
         data: body,
-        url: endpoint
+        url: meEndpoint
     };
 
     return auth.httpRequest(requestConfig)
@@ -44,6 +48,47 @@ export async function updateUserDetails(body: any) {
         return response.data;
     })
     .catch((error: any) => {
-        throw new Error('Failed to fetch user profile');
+        throw new Error('Failed to update user profile.');
     });
   }
+
+/**
+ * API Call update the password.
+ */
+export async function updatePassword(currentPassword: any, username: any, newPassword: any) {
+
+const requestConfig = {
+    headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/scim+json"
+    },
+    method: "PATCH",
+    url: meEndpoint,
+    auth: {
+        password: currentPassword,
+        username: [ username, "@",
+        `${process.env.REACT_APP_ORG_NAME}` ]
+        .join("")
+    },
+    data: {
+        Operations: [
+            {
+                op: "add",
+                value: {
+                    password: newPassword
+                }
+            }
+        ],
+        schemas: [ "urn:ietf:params:scim:api:messages:2.0:PatchOp" ]
+    },
+    withCredentials: true
+};
+
+return auth.httpRequest(requestConfig)
+.then((response: any) => {
+    return response.data;
+})
+.catch((error: any) => {
+    throw new Error('Failed to update the password.');
+});
+}

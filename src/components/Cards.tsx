@@ -12,22 +12,25 @@ const cards: {
     link: string;
 }[]= [
         {
-            'title': 'Add a Connection',
-            'description': 'Enable your application users to log in using a standard-based identity provider.',
-            'link': 'https://wso2.com/asgardeo/docs/guides/authentication/#manage-connections'
+            'title': 'User Guide',
+            'description': 'Check out our user guide and we will guide you to integrate your applications with Asgardeo.',
+            'link': 'https://docs.google.com/document/d/1-yKHQgQE3-Pj5FRoBdOLf33u1Y41QWzNd3jdR6TVhIQ/edit#heading=h.mvq9fx4kf8ex'
         },
         {
-            'title': 'Enable Multifactor Authentication',
-            'description': 'Add strong authentication to your application by enabling multiple authentication factors.',
-            'link': 'https://wso2.com/asgardeo/docs/guides/authentication/mfa/'
+            'title': 'Github Repository',
+            'description': 'Lets go through the application codebase and contribute to our Asgardeo React Sample application.',
+            'link': 'https://github.com/dasuni-30/asgardeo-react-sample-app'
         },
         {
-            'title': 'Guides',
-            'description': 'The guides provide the instructions for building IAM uses cases.',
-            'link': 'https://wso2.com/asgardeo/docs/guides/'
+            'title': 'Asgardeo Docs',
+            'description': 'Read our Docs for the guides to provide the instructions for building IAM uses cases.',
+            'link': 'https://wso2.com/asgardeo/docs/'
         }
     ];
 
+/**
+ * Card component.
+ */
 const Cards: React.FunctionComponent<{}> = () => {
     return (
         <div className='row'>

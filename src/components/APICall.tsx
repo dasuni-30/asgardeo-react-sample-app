@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { getUserDetails } from '../api/user-info';
 import endpointConfig from '../configs/endpoint-config';
 
-
-const Copy: React.FunctionComponent<{}> = () => {
+/**
+ * API Call component.
+ */
+const APICall: React.FunctionComponent<{}> = () => {
     const [ userInfo, setUserInfo ] = useState<any>();
 
     const meEndpoint = `${endpointConfig.api.endpoints.me}`;
@@ -43,17 +45,16 @@ const Copy: React.FunctionComponent<{}> = () => {
   
     return (
         <>
-        <h3>API Request</h3>
         <pre id='contentToCopy'>
             {message}
         </pre>
         <div className='container'>
             <div className='column'>
-                <button className='button' onClick={handleApiCall}>Ping</button>
+                <button className='btn' onClick={handleApiCall}>Ping</button>
             </div>
             <br/>
             <div className='column'>
-                <button className='button' onClick={copyContent}>Copy</button>
+                <button className='btn-outline' onClick={copyContent}>Copy</button>
             </div>
         </div>
         <h3>Output</h3>
@@ -64,4 +65,4 @@ const Copy: React.FunctionComponent<{}> = () => {
     )
 }
 
-export default Copy;
+export default APICall;

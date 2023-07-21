@@ -16,7 +16,7 @@ export const Home: FunctionComponent = (): ReactElement => {
 
     return (
         <div className='App'>
-            <header className='App-header'>
+            <header className='App-header-section'>
             <div>
             <img alt='react-logo' src={ REACT_LOGO } className='react-logo-image logo'/>
                 <h1>Quick Start Pack</h1>

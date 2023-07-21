@@ -4,13 +4,16 @@ import routesConfig from '../configs/routes-config';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '@asgardeo/auth-react';
 
+/**
+ * Nav bar component.
+ */
 const Nav: React.FunctionComponent<{}> = () => {
     const { state, signIn, signOut, getDecodedIDToken } = useAuthContext();
     const [ isResourcesAllowed, setIsResourcesAllowed ] = useState<boolean>();
 
     const navigate = useNavigate();
 
-    const signUpURL = `${process.env.REACT_APP_SIGN_UP_URL}${process.env.REACT_APP_CLIENT_ID} &sp=${process.env.REACT_APP_APPLICATION_NAME}`;
+    const signUpURL = `${process.env.REACT_APP_SIGN_UP_URL}${process.env.REACT_APP_CLIENT_ID} &sp=${process.env.REACT_APP_APPLICATION_NAME} &redirect_url=${process.env.REACT_APP_CLIENT_BASE_URL}`;
 
     const routeProfileChange = () =>{ 
         let path = routesConfig.profile; 
@@ -47,8 +50,6 @@ const Nav: React.FunctionComponent<{}> = () => {
             </div>
             <div className='center-panel'>
                 <a href='#/' onClick={routeHomeChange}>Home</a>
-            </div>
-             <div className='right-panel'>
                 { 
                     state.isAuthenticated
                     && <a href='#/' onClick={routeProfileChange}>Profile</a>
@@ -57,13 +58,18 @@ const Nav: React.FunctionComponent<{}> = () => {
                     isResourcesAllowed
                     && <a href='#/' onClick={routeResourcesChange}>API Call</a>
                 }
+            </div>
+             <div className='right-panel'>
                 { state.isAuthenticated ? (
-                    <button className='btn' onClick={() => signOut()}>Signout</button>
+                    <>
+                        <a>{state?.username}</a>
+                        <button className='btn' onClick={() => signOut()}>Signout</button>
+                    </>
                 ) : (
                     <>
                         <button className='btn' onClick={() => signIn()}>Signin</button>
                         <a href={signUpURL}>
-                            <button className='btn'>Signup</button>
+                            <button className='btn-outline'>Signup</button>
                         </a>
                     </>
                 ) }

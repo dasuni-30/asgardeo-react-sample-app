@@ -1,6 +1,7 @@
-import { getUserDetails, updateUserDetails } from '../api/user-info';
+import { getUserDetails, updatePassword, updateUserDetails } from '../api/user-info';
 import { ChangeEvent, useEffect, useState } from 'react';
 import $ from 'jquery'
+import { useAuthContext } from '@asgardeo/auth-react';
 
 interface FormValues {
   username?: string;
@@ -19,9 +20,24 @@ const initialFormValues: FormValues = {
   id: '',
   mfa: ''
 };
+interface PasswordFormValues {
+  currentPassword?: string;
+  newPassword?: string;
+}
 
+const initialPasswordFormValues: PasswordFormValues = {
+  currentPassword: '',
+  newPassword: ''
+};
+
+/**
+ * Profile component.
+ */
 const Profile: React.FunctionComponent = () => {
+
   const [formValues, setFormValues] = useState<FormValues>(initialFormValues);
+  const [passwordFormValues, setpasswordFormValues] = useState<PasswordFormValues>(initialPasswordFormValues);
+  const { signOut } = useAuthContext();
   const [ userInfo, setUserInfo ] = useState<any>();
 
   const SCHEMA: string=  'urn:scim:wso2:schema';
@@ -62,6 +78,14 @@ const Profile: React.FunctionComponent = () => {
     }));
   };
 
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = event.target;
+    setpasswordFormValues((prevFormValues) => ({
+      ...prevFormValues,
+      [name]: value,
+    }));
+  };
+
   function handleSelect(event: ChangeEvent<HTMLSelectElement>): void {
     const { name, value } = event.target;
     setFormValues((prevFormValues) => ({
@@ -81,17 +105,43 @@ const Profile: React.FunctionComponent = () => {
     try {
       updateUserDetails(_formData);
     } catch (error) {
+      showNotification('Error in updating the user details.');
+    } finally {
+      showNotification('User details update successful.');
+    }
+  };
+
+  const handlePasswordSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    console.log(passwordFormValues)
+    try {
+      updatePassword(
+        passwordFormValues?.currentPassword,
+        `DEFAULT/${userInfo?.userName?.split('/')[1]}`,
+        passwordFormValues?.newPassword
+      ).then((response: any) => {
+        if (response.status && response.status === 200) {
+          showNotification('Password update successful.');
+        }
+        signOut();
+    })
+    .catch((error: any) => {
+      if (!error.response || error.response.status === 401) {
+        showNotification('Error in updating the password.');
+      }
+    });
+
+    } catch (error) {
       // Log error.
     } finally {
       // Navigate to the profile page. 
     }
-    
-    showNotification();
   };
 
-  function showNotification() {
+  function showNotification(message: string) {
     var notification = document.getElementById('successNotification');
     notification?.classList.add('show');
+    $('#notificationDescription').text(message)
     setTimeout(function() {
       notification?.classList.remove('show');
     }, 3000); // Adjust the timeout duration as needed
@@ -100,8 +150,13 @@ const Profile: React.FunctionComponent = () => {
   return (
     <>
       <div className='App-section'>
+        <header className='App-header-sub-section'>
+          <div>
+              <h1>User Profile</h1>
+              <p className='p-description'>View and update the user profile.</p>
+          </div>
+        </header>
         <form onSubmit={handleSubmit}>
-          <h3>User Profile</h3>
           <table className='user-profile-table'>
           <div className='info-box'>
             <h3>Personal Info</h3>
@@ -159,9 +214,7 @@ const Profile: React.FunctionComponent = () => {
                   />
                 </td>
               </tr>
-            </div>
             <br/>
-            <div className='info-box'>
               <tr>
                 <td colSpan={2} className='tr-align-center'>
                   <h3>Security Methods</h3>
@@ -172,26 +225,79 @@ const Profile: React.FunctionComponent = () => {
                 <td colSpan={2} className='tr-align-center'>
                   <label>Second Factor Authentication: </label>
                   <select id='mfa' name='mfa' onChange={handleSelect}>
+                    <option value='false'>None</option>
                     <option value='email-otp-authenticator'>Email OTP</option>
                     <option value='SMSOTP'>SMS OTP</option>
                     <option value='totp'>TOTP</option>
                   </select>
                 </td>
               </tr>
+              <tr>
+              <td colSpan={2} className='tr-padding tr-align-center'>
+                <button className='btn' type='submit'>Update</button>
+              </td>
+            </tr>
+            </div>
+          </table>
+        </form>
+        <form onSubmit={handlePasswordSubmit}>
+        <table className='user-profile-table'>
+        <div className='info-box'>
+              <tr>
+                <td colSpan={2} className='tr-align-center'>
+                  <h3>Change Password</h3>
+                  <p className='p-description'>Update your password regularly and make sure it's unique.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label htmlFor='currentPassword'>Current Password:</label>
+                </td>
+                <td>
+                  <input
+                    type='password'
+                    id='currentPassword'
+                    name='currentPassword'
+                    onChange={handlePasswordChange}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label htmlFor='newPassword'>New Password:</label>
+                </td>
+                <td>
+                  <input
+                    type='password'
+                    id='newPassword'
+                    name='newPassword'
+                    onChange={handlePasswordChange}
+                  />
+                </td>
+              </tr>
+              <tr>
+              <td colSpan={2} className='tr-align-center'>
+                <label htmlFor='hint'>
+                  Changing the password will result in the termination of the current session.
+                  <br/>
+                  You will have to login with the newly changed password.
+                </label>
+              </td>
+              </tr>
+              <tr>
+              <td colSpan={2} className='tr-padding tr-align-center'>
+                <button className='btn' type='submit'>Update</button>
+              </td>
+              </tr>
             </div>
             <tr>
               <td colSpan={2} className='tr-padding tr-align-center'>
-                <button type='submit' className='button'>Update</button>
-              </td>
-            </tr>
-            <tr>
-              <td colSpan={2} className='tr-padding tr-align-center'>
                 <div className='notification tr-align-center' id='successNotification'>
-                  <p className='p-description'>Submission successful!</p>
+                  <p className='p-description' id='notificationDescription'>Submission successful!</p>
                 </div>
               </td>
             </tr>
-          </table>
+            </table>
         </form>
       </div>
     </>
