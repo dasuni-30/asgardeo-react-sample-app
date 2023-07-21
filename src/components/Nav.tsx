@@ -62,7 +62,7 @@ const Nav: React.FunctionComponent<{}> = () => {
              <div className='right-panel'>
                 { state.isAuthenticated ? (
                     <>
-                        <a>{state?.username}</a>
+                        <a href='#/'>{state?.username}</a>
                         <button className='btn' onClick={() => signOut()}>Signout</button>
                     </>
                 ) : (
