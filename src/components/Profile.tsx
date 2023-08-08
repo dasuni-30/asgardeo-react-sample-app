@@ -157,102 +157,128 @@ const Profile: React.FunctionComponent = () => {
           </div>
         </header>
         <form onSubmit={handleSubmit}>
-          <table className='user-profile-table'>
           <div className='info-box'>
-            <h3>Personal Info</h3>
-            <p className='p-description'>Update your user profile information.</p>
-              <tr>
-                <td>
-                  <label htmlFor='username'>Username:</label>
-                </td>
-                <td>
-                  <label>{formValues?.username}</label>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label htmlFor='userid'>User ID:</label>
-                </td>
-                <td>
-                  <label>{formValues?.id}</label>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label htmlFor='email'>Email:</label>
-                </td>
-                <td>
-                  <label>{formValues?.email}
-                  </label>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label htmlFor='givenName'>First Name:</label>
-                </td>
-                <td>
-                  <input
-                    type='text'
-                    id='givenName'
-                    name='givenName'
-                    value={formValues?.givenName}
-                    onChange={handleChange}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label htmlFor='lastName'>Last Name:</label>
-                </td>
-                <td>
-                  <input
-                    type='text'
-                    id='lastName'
-                    name='lastName'
-                    value={formValues?.lastName}
-                    onChange={handleChange}
-                  />
-                </td>
-              </tr>
-            <br/>
-              <tr>
-                <td colSpan={2} className='tr-align-center'>
-                  <h3>Security Methods</h3>
-                  <p className='p-description'>Secure your account by setting two factor authentication.</p>
-                </td>
-              </tr>
-              <tr>
-                <td colSpan={2} className='tr-align-center'>
-                  <label>Second Factor Authentication: </label>
-                  <select id='mfa' name='mfa' onChange={handleSelect}>
-                    <option value='false'>None</option>
-                    <option value='email-otp-authenticator'>Email OTP</option>
-                    <option value='SMSOTP'>SMS OTP</option>
-                    <option value='totp'>TOTP</option>
-                  </select>
-                </td>
-              </tr>
-              <tr>
-              <td colSpan={2} className='tr-padding tr-align-center'>
-                <button className='btn' type='submit'>Update</button>
-              </td>
-            </tr>
-            </div>
-          </table>
+            <div className="table-container">
+              <table className="one-column-table">
+                <h3>Personal Info</h3>
+                <p className='p-description'>Update your user profile information.</p>
+                <tr>
+                  <td>
+                    <label htmlFor='username'>Username:</label>
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan={2} className='tr-align-center margin-bottom'>
+                    <input
+                      type='text'
+                      id='username'
+                      name='username'
+                      readOnly
+                      value={formValues?.username}
+                      onChange={handleChange}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan={2} className='tr-align-center'>
+                    <label htmlFor='userid'>User ID:</label>
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan={2} className='tr-align-center'>
+                    <input
+                      type='text'
+                      id='id'
+                      name='id'
+                      readOnly
+                      value={formValues?.id}
+                      onChange={handleChange}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan={2} className='tr-align-center'>
+                    <label htmlFor='email'>Email:</label>
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan={2} className='tr-align-center'>
+                    <input
+                      type='text'
+                      id='email'
+                      name='email'
+                      readOnly
+                      value={formValues?.email}
+                      onChange={handleChange}
+                    />
+                    </td>
+                </tr>
+                <tr>
+                  <td colSpan={2} className='tr-align-center'>
+                    <label htmlFor='givenName'>First Name:</label>
+                    </td>
+                </tr>
+                <tr>
+                  <td colSpan={2} className='tr-align-center'>
+                    <input
+                      type='text'
+                      id='givenName'
+                      name='givenName'
+                      value={formValues?.givenName}
+                      onChange={handleChange}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan={2} className='tr-align-center'>
+                    <label htmlFor='lastName'>Last Name:</label>
+                    </td>
+                </tr>
+                <tr>
+                  <td colSpan={2} className='tr-align-center'>
+                    <input
+                      type='text'
+                      id='lastName'
+                      name='lastName'
+                      value={formValues?.lastName}
+                      onChange={handleChange}
+                    />
+                  </td>
+                </tr>
+                <br/>
+                <h3>Security Methods</h3>
+                <p className='p-description'>Secure your account by setting two factor authentication.</p>
+                <tr>
+                  <td colSpan={2} className='tr-align-center'>
+                    <label>Second Factor Authentication: </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan={2} className='tr-align-center'>
+                    <select id='mfa' name='mfa' onChange={handleSelect}>
+                      <option value='false'>None</option>
+                      <option value='email-otp-authenticator'>Email OTP</option>
+                      <option value='SMSOTP'>SMS OTP</option>
+                      <option value='totp'>TOTP</option>
+                    </select>
+                  </td>
+                </tr>
+                <button className='btn margin-top' type='submit'>Update</button>
+              </table>
+            </div> 
+          </div>
         </form>
         <form onSubmit={handlePasswordSubmit}>
         <table className='user-profile-table'>
         <div className='info-box'>
-              <tr>
-                <td colSpan={2} className='tr-align-center'>
                   <h3>Change Password</h3>
                   <p className='p-description'>Update your password regularly and make sure it's unique.</p>
-                </td>
-              </tr>
               <tr>
                 <td>
                   <label htmlFor='currentPassword'>Current Password:</label>
                 </td>
+              </tr>
+              <tr>
                 <td>
                   <input
                     type='password'
@@ -266,6 +292,8 @@ const Profile: React.FunctionComponent = () => {
                 <td>
                   <label htmlFor='newPassword'>New Password:</label>
                 </td>
+              </tr>
+              <tr>
                 <td>
                   <input
                     type='password'
@@ -279,16 +307,12 @@ const Profile: React.FunctionComponent = () => {
               <td colSpan={2} className='tr-align-center'>
                 <label htmlFor='hint'>
                   Changing the password will result in the termination of the current session.
-                  <br/>
                   You will have to login with the newly changed password.
                 </label>
               </td>
               </tr>
-              <tr>
-              <td colSpan={2} className='tr-padding tr-align-center'>
-                <button className='btn' type='submit'>Update</button>
-              </td>
-              </tr>
+                <button className='btn margin-top' type='submit'>Update</button>
+
             </div>
             <tr>
               <td colSpan={2} className='tr-padding tr-align-center'>

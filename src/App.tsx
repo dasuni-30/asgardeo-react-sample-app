@@ -6,20 +6,19 @@ import { NotFound } from './pages/NotFound';
 import { Resources } from './pages/Resources';
 import Footer from './components/Footer';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { AuthenticatedComponent } from '@asgardeo/auth-react';
-
-// const ProtectedRoute = (component: React.FunctionComponent<{}>) => {
-//     const { state: { isAuthenticated } } = useAuthContext();
-//     return <> { isAuthenticated ? component :  <Home/> } </>;
-//   };
-
+import { AuthenticatedComponent, useAuthContext } from '@asgardeo/auth-react';
 
 function App() {
+
+    const { state } = useAuthContext();
 
   return (
     <Router>
         <div className='App'>
-            <Nav></Nav>
+            {
+                state?.isAuthenticated
+                && <Nav></Nav>
+            }
             <Routes>
                 <Route path='/' element={ <Home/> } />
                 <Route
@@ -42,10 +41,6 @@ function App() {
                         </AuthenticatedComponent>
                     }
                 />
-                {/* <Route
-                    path="/profile"
-                    element={<ProtectedRoute component={Profile} />}
-                /> */}
                 <Route path='*' element={ <NotFound /> } />
             </Routes>
             <Footer />

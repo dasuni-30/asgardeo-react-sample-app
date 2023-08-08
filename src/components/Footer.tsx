@@ -11,8 +11,8 @@ const Footer: React.FunctionComponent<{}> = () => {
     return (
         <div className='footer'>
             <footer className='page-footer font-small blue'>
-                <p>© {`${year}`} Copyright:
-                    <a href='https://wso2.com/'> WSO2.Inc</a>
+                <p>© {`${year}`}
+                    <a href='https://wso2.com/'> WSO2 LLC.</a>
                 </p>
             </footer>
         </div>

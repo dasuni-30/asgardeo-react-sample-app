@@ -47,8 +47,12 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: rgb(0, 0, 0);
-  height: 400px;
+  height: 600px;
   border-bottom: 1px solid #b3b0b01b;
+}
+
+.App-header-length {
+  height: 500px;
 }
 
 .App-section {
@@ -66,7 +70,7 @@
 }
 
 .App-section h3 {
-  font-weight: 600;
+  font-weight: 200;
 }
 
 .image-icon {
@@ -74,10 +78,10 @@
   margin: 10px;
 }
 
-.container {
+/* Apply general styling to the button container */
+.button-container {
   display: flex;
-  width: 90;
-  color: #000000;
+  justify-content: center; /* Centers the buttons horizontally */
 }
 
 .card-container {
@@ -87,7 +91,7 @@
 
 .App h1 {
   font-family: Inter;
-  font-weight: 500;
+  font-weight: 300;
   font-size: xx-large;
 }
 
@@ -134,13 +138,23 @@ th, td {
   text-align: left;
 }
 
+.navbar-section {
+  max-width: 100%;
+  background: #F7F8FB;
+  display: flex;
+  justify-content: center;
+}
+
 .navbar {
+  max-width: 90%;
   display: flex;
   background: #F7F8FB;
+  padding-left: 25px;
+  justify-content: center;
 }
 
 .navbar a {
-  padding: 10px;
+  padding: 15px;
   text-decoration: none;
   color: #000;
   font-size: small;
@@ -152,18 +166,27 @@ th, td {
   text-align: right;
   margin-left: 10px;
   float: left;
+  display: flex;
+    justify-content: right; /* Centers the columns horizontally */
+    align-items: center; 
 }
 
 .left-panel {
   width: 15%;
   padding: 10px;
   text-align: center;
+  display: flex;
+    justify-content: center; /* Centers the columns horizontally */
+    align-items: center; 
 }
 
 .center-panel {
   width: 40%;
   padding: 15px;
   text-align: left;
+  display: flex;
+    justify-content: left; /* Centers the columns horizontally */
+    align-items: center; 
 }
 
 * {
@@ -176,50 +199,58 @@ body {
 }
 
 /* Float four columns side by side */
-.column {
+.col {
   float: left;
   width: 30%;
   padding: 10px;
-  margin-left: 1%;
+  display: flex;
+  align-items: center;
 }
 
 /* Remove extra left and right margins, due to padding */
-.row {margin: 0 -5px;}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 /* Responsive columns */
 @media screen and (max-width: 600px) {
-  .column {
+  .col {
     width: 100%;
     display: block;
     margin-bottom: 20px;
+  }
+
+  .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
   }
 }
 
 /* Style the counter cards */
 .card {
-  padding: 15px;
+  padding: 25px;
   text-align: center;
   background: #ffffff;
   height: 175px;
-  border: 1px solid #1591EB;
+  display: grid;
+  border: 1px solid #FF7300;
   border-radius: 0.5rem;
 }
 
 .card a{
   text-decoration: none;
-  color: #1591EB;
+  color: #FF7300;
 }
 
 .card h3{
   font-size: medium;
-  color: #1591EB;
+  color: #FF7300;
 }
 
 .card p{
@@ -232,7 +263,7 @@ h3 {
 
 .footer {
   background: #F7F8FB;
-  position: relative;
+  position: fixed;
   bottom: 0;
   width: 100%;
 }
@@ -259,37 +290,59 @@ h3 {
 }
 
 .react-logo-image {
-  width: 10%;
-  padding: 10px;
+  height: 50px;
+  padding: 30px;
 }
 
 .asgardeo-logo-image {
-  width: 70%;
+  height: 40px;
+  padding: 30px;
+}
+
+.asgardeo-logo-image-small {
+  height: 20px;
   padding: 10px;
 }
 
+.link-logo-image-small {
+  height: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.link-logo-image-small:hover {
+  border-color: #FF7300;
+}
+
 .btn {
-  border: 2px solid #1591EB;
-  background-color: #1591EB;
+  border: 2px solid #FF7300;
+  background: #FF7300;
   color: rgb(255, 255, 255);
   padding: 5px 10px;
   font-size: 16px;
   cursor: pointer;
   border-radius: 500rem;
   font-size: small;
-  width: 100px;
+  width: 150px;
+  margin: 10px;
+}
+
+.margin-top {
+  margin-bottom: 35px;
+  margin-top: 35px;
 }
 
 .btn-outline {
-  border: 2px solid #1591EB;
+  border: 2px solid #FF7300;
   background-color: #ffffff;
-  color: #1591EB;
+  color: #FF7300;
   padding: 5px 10px;
   font-size: 16px;
   cursor: pointer;
   border-radius: 500rem;
   font-size: small;
-  width: 100px;
+  width: 150px;
+  margin: 10px;
 }
 
 .notification {
@@ -337,9 +390,11 @@ code {
 
 .info-box {
   align-items: center;
-  padding: 10px;
+  padding: 50px;
   border: 1px solid #cccccc4b;
   border-radius: 4px;
+  width: 500px;
+  margin: 25px;
 }
 
 .column {
@@ -354,7 +409,7 @@ code {
   font-weight: bold;
   text-align: center;
   text-decoration: none;
-  background-color: #1591EB;
+  background-color: #FF7300;
   color: white;
   border: none;
   border-radius: 4px;
@@ -362,18 +417,18 @@ code {
 }
 
 .button:hover {
-  background-color: #1591EB;
+  background-color: #FF7300;
 }
 
 .button:active {
-  background-color: #1591EB;
+  background-color: #FF7300;
 }
 
 /* Styles for the input box */
 input {
   /* Set width and height */
-  width: 200px;
-  height: 20px;
+  width: 400px;
+  height: 25px;
 
   /* Add some padding for better appearance */
   padding: 5px;
@@ -397,6 +452,20 @@ input {
   outline: none;
 }
 
+select {
+  width: 400px;
+  height: 30px;
+
+  /* Add some padding for better appearance */
+  padding: 15px;
+
+  margin-bottom: 15px;
+
+  /* Border styles */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
 /* Hover effect */
 input:hover {
   border-color: #999;
@@ -404,12 +473,12 @@ input:hover {
 
 /* Focus effect */
 input:focus {
-  border-color: #1591EB;
+  border-color: #FF7300;
 }
 
 .App-header-sub-section {
   background-color: #F7F8FB;
-  min-height: 30vh;
+  min-height: 15vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -419,3 +488,100 @@ input:focus {
   width: 100%;
 }
 
+/* Apply general styling to the table container */
+.table-container {
+  display: flex;
+  justify-content: center; /* Horizontally center the table */
+  align-items: center; /* Vertically center the table */
+  height: 90vh; /* Set the height of the container to fill the viewport */
+}
+
+/* Apply general styling to the table */
+table.one-column-table {
+  border-collapse: collapse; /* Merge cell borders */
+  width: 400px; /* Set the width of the table */
+}
+
+/* Apply styling to table cells (td) */
+table.one-column-table td {
+  padding: 5px; /* Add padding inside the cells */
+  text-align: left; /* Center the content inside the cells */
+}
+
+/* Apply styling to table cells (td) */
+table.one-column-table tr {
+  padding: 15px; /* Add padding inside the cells */
+  text-align: left; /* Center the content inside the cells */
+  font-family: Arial, sans-serif; /* Choose a font for the text */
+}
+
+/* Apply general styling to the container */
+.container {
+  display: flex;
+  justify-content: center; /* Centers the columns horizontally */
+  align-items: center; /* Centers the columns vertically */
+  padding: 20px;
+}
+
+/* Apply styling to the columns */
+.container-column {
+  text-align: center;
+  font-size: 18px;
+  width: 230px;
+  height: 100px;
+  display: contents;
+}
+
+.button-container {
+  display: grid;
+}
+
+.b {
+  font-weight: 10;
+}
+
+/* Base styles for the avatar and dropdown */
+.avatar-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Avatar image styling */
+.avatar img {
+  width: 20px; /* Adjust the size as needed */
+  height: 20px;
+  border-radius: 50%; /* To make it circular */
+  cursor: pointer;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  padding: 8px;
+  z-index: 1;
+}
+
+/* Dropdown item styles */
+.dropdown-content li {
+  list-style-type: none;
+}
+
+/* Show the dropdown when hovering over the avatar */
+.avatar-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Optional: Style the links inside the dropdown */
+.dropdown-content a {
+  display: block;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #333;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}

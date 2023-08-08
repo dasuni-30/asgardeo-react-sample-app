@@ -48,12 +48,9 @@ const APICall: React.FunctionComponent<{}> = () => {
         <pre id='contentToCopy'>
             {message}
         </pre>
-        <div className='container'>
-            <div className='column'>
+        <div>
+            <div className='button-container'>
                 <button className='btn' onClick={handleApiCall}>Ping</button>
-            </div>
-            <br/>
-            <div className='column'>
                 <button className='btn-outline' onClick={copyContent}>Copy</button>
             </div>
         </div>
