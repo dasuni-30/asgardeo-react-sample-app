@@ -14,8 +14,8 @@ export const Resources: FunctionComponent = (): ReactElement => {
         <div className='App-section'>
             <header className='App-header-sub-section'>
                 <div>
-                    <h1>API Call</h1>
-                    <p className='p-description'>Ping an API by clicking on the button below..</p>
+                    <h1>External API</h1>
+                    <p className='p-description'>Invoke an external API by clicking on the button below.</p>
                 </div>
             </header>
             <APICall></APICall>

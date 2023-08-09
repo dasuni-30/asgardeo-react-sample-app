@@ -40,19 +40,17 @@
 /* Custom Styles */
 
 .App-header-section {
-  background-color: #fcfdfd;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: rgb(0, 0, 0);
-  height: 600px;
-  border-bottom: 1px solid #b3b0b01b;
+  height: 650px;
 }
 
 .App-header-length {
-  height: 500px;
+  height: 550px;
 }
 
 .App-section {
@@ -76,6 +74,12 @@
 .image-icon {
   height: 60%;
   margin: 10px;
+}
+
+.card-section {
+  background: #F7F8FB;
+  height: 150px;
+  display: flow-root;
 }
 
 /* Apply general styling to the button container */
@@ -290,12 +294,12 @@ h3 {
 }
 
 .react-logo-image {
-  height: 50px;
+  height: 60px;
   padding: 30px;
 }
 
 .asgardeo-logo-image {
-  height: 40px;
+  height: 60px;
   padding: 30px;
 }
 
@@ -306,8 +310,8 @@ h3 {
 
 .link-logo-image-small {
   height: 20px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .link-logo-image-small:hover {
@@ -324,7 +328,7 @@ h3 {
   border-radius: 500rem;
   font-size: small;
   width: 150px;
-  margin: 10px;
+  margin: 2px;
 }
 
 .margin-top {
@@ -342,7 +346,7 @@ h3 {
   border-radius: 500rem;
   font-size: small;
   width: 150px;
-  margin: 10px;
+  margin: 2px;
 }
 
 .notification {
@@ -362,7 +366,6 @@ h3 {
 
 pre {
   background-color: #F5F5F8;
-  border: 1px solid #ccc;
   padding: 20px;
   font-family: Inter;
   font-size: 14px;
@@ -372,7 +375,7 @@ pre {
   width: 60%;
   min-height: 100px;
   text-align: left;
-
+  border-radius: 8px;
 }
 
 code {
@@ -392,7 +395,7 @@ code {
   align-items: center;
   padding: 50px;
   border: 1px solid #cccccc4b;
-  border-radius: 4px;
+  border-radius: 8px;
   width: 500px;
   margin: 25px;
 }
@@ -435,7 +438,7 @@ input {
 
   /* Border styles */
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 8px;
 
   /* Font styles */
   font-family: Arial, sans-serif;
@@ -486,6 +489,7 @@ input:focus {
   font-size: calc(10px + 2vmin);
   color: rgb(0, 0, 0);
   width: 100%;
+  border-radius: 8px;
 }
 
 /* Apply general styling to the table container */
@@ -520,20 +524,30 @@ table.one-column-table tr {
   display: flex;
   justify-content: center; /* Centers the columns horizontally */
   align-items: center; /* Centers the columns vertically */
-  padding: 20px;
+}
+
+.logo-container {
+  display: contents;
 }
 
 /* Apply styling to the columns */
 .container-column {
   text-align: center;
   font-size: 18px;
-  width: 230px;
+  width: 100px;
   height: 100px;
-  display: contents;
+}
+
+.container-column a {
+  padding: 15px;
+  text-decoration: none;
+  color: #000;
+  font-size: small;
 }
 
 .button-container {
   display: grid;
+  margin-top: 100px;
 }
 
 .b {

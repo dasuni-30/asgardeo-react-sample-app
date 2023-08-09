@@ -36,13 +36,13 @@ export const Home: FunctionComponent = (): ReactElement => {
             <div>
                         <>
                         <div className="container">
-                            <div className="container-column">
+                            <div className="container-column logo-container">
                                 <img alt='react-logo' src={ ASGARDEO_LOGO } className='asgardeo-logo-image logo'/>
                             </div>
-                            <div className="container-column">
+                            <div className="container-column logo-container">
                                 +
                             </div>
-                            <div className="container-column">
+                            <div className="container-column logo-container">
                                 <img alt='react-logo' src={ REACT_LOGO } className='asgardeo-logo-image logo'/>
                             </div>
                         </div>
@@ -59,8 +59,11 @@ export const Home: FunctionComponent = (): ReactElement => {
             </header>
                     )
                 }
-            <h3>What can we do next?</h3>
-            <Links></Links>
+            <div className='card-section'>
+                <h3>What can we do next?</h3>
+                <Links></Links>
+            </div>
+            
         </div>
     );
 };

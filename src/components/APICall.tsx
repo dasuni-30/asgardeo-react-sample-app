@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { getUserDetails } from '../api/user-info';
-import endpointConfig from '../configs/endpoint-config';
 
 /**
  * API Call component.
@@ -8,13 +7,11 @@ import endpointConfig from '../configs/endpoint-config';
 const APICall: React.FunctionComponent<{}> = () => {
     const [ userInfo, setUserInfo ] = useState<any>();
 
-    const meEndpoint = `${endpointConfig.api.endpoints.me}`;
-
     const message = 
-    `curl --request GET --url \n`
-    + meEndpoint
-    + `\n`
-    + `--header 'Accept: application/scim+json'`;
+    'Initiate a request to an external API and retrieve the response.' +
+    'This involves communicating with an external server through a ' +
+    'designated API, requesting specific data or executing particular' +
+    ' actions inherent to the API\'s functionality.';
 
   const handleApiCall = () => {
     (async () => {
@@ -26,38 +23,20 @@ const APICall: React.FunctionComponent<{}> = () => {
       }
     })();
   };
-
-  function copyContent() {
-    const contentToCopy = document.getElementById('contentToCopy');
-    const textToCopy: string = String(contentToCopy?.innerText);
-
-    navigator.clipboard.writeText
-                (textToCopy)
-      .then(() => {
-        setTimeout(() => {
-          
-        }, 2000); // Reset the button text after 2 seconds
-      })
-      .catch((error) => {
-        console.error('Unable to copy content:', error);
-      });
-  }
   
     return (
         <>
-        <pre id='contentToCopy'>
-            {message}
-        </pre>
-        <div>
-            <div className='button-container'>
-                <button className='btn' onClick={handleApiCall}>Ping</button>
-                <button className='btn-outline' onClick={copyContent}>Copy</button>
-            </div>
-        </div>
-        <h3>Output</h3>
-        <pre id='contentToCopy'>
-            {JSON.stringify(userInfo, null, 2)}
-        </pre>
+          <pre id='contentToCopy'>
+              {message}
+          </pre>
+          <div>
+            <button className='btn' onClick={handleApiCall}>Invoke API</button>
+          </div>
+          <br/>
+          <h3>Output</h3>
+          <pre id='contentToCopy'>
+              {JSON.stringify(userInfo, null, 2)}
+          </pre>
         </>
     )
 }
