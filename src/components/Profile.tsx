@@ -152,8 +152,8 @@ const Profile: React.FunctionComponent = () => {
       <div className='App-section'>
         <header className='App-header-sub-section'>
           <div>
-              <h1>User Profile</h1>
-              <p className='p-description'>View and update the user profile.</p>
+            <h1>User Profile</h1>
+            <p className='p-description'>View and update the user profile.</p>
           </div>
         </header>
         <form onSubmit={handleSubmit}>
@@ -211,12 +211,12 @@ const Profile: React.FunctionComponent = () => {
                       value={formValues?.email}
                       onChange={handleChange}
                     />
-                    </td>
+                  </td>
                 </tr>
                 <tr>
                   <td colSpan={2} className='tr-align-center'>
                     <label htmlFor='givenName'>First Name:</label>
-                    </td>
+                  </td>
                 </tr>
                 <tr>
                   <td colSpan={2} className='tr-align-center'>
@@ -232,7 +232,7 @@ const Profile: React.FunctionComponent = () => {
                 <tr>
                   <td colSpan={2} className='tr-align-center'>
                     <label htmlFor='lastName'>Last Name:</label>
-                    </td>
+                  </td>
                 </tr>
                 <tr>
                   <td colSpan={2} className='tr-align-center'>
@@ -269,10 +269,10 @@ const Profile: React.FunctionComponent = () => {
           </div>
         </form>
         <form onSubmit={handlePasswordSubmit}>
-        <table className='user-profile-table'>
-        <div className='info-box'>
-                  <h3>Change Password</h3>
-                  <p className='p-description'>Update your password regularly and make sure it's unique.</p>
+          <table className='user-profile-table'>
+          <div className='info-box'>
+            <h3>Change Password</h3>
+            <p className='p-description'>Update your password regularly and make sure it's unique.</p>
               <tr>
                 <td>
                   <label htmlFor='currentPassword'>Current Password:</label>
@@ -304,16 +304,14 @@ const Profile: React.FunctionComponent = () => {
                 </td>
               </tr>
               <tr>
-              <td colSpan={2} className='tr-align-center'>
-                <label htmlFor='hint'>
-                  Changing the password will result in the termination of the current session.
-                  You will have to login with the newly changed password.
-                </label>
+                <td colSpan={2} className='tr-align-center'>
+                  <label htmlFor='hint'>
+                    Changing the password will result in the termination of the current session.
+                    You will have to login with the newly changed password.
+                  </label>
               </td>
               </tr>
-                <button className='btn margin-top' type='submit'>Update</button>
-
-            </div>
+              <button className='btn margin-top' type='submit'>Update</button>
             <tr>
               <td colSpan={2} className='tr-padding tr-align-center'>
                 <div className='notification tr-align-center' id='successNotification'>
@@ -321,7 +319,8 @@ const Profile: React.FunctionComponent = () => {
                 </div>
               </td>
             </tr>
-            </table>
+            </div>
+          </table>
         </form>
       </div>
     </>

@@ -13,11 +13,11 @@ export const NotFound: FunctionComponent = (): ReactElement => {
     const navigate = useNavigate();
 
     return (
-        <>
-            <h3>
-                404: Page not found
-            </h3>
-            <button className='btn primary' onClick={() => { navigate('/') }}>Go back to home</button>
-        </>
+      <>
+        <h3>
+          404: Page not found
+        </h3>
+        <button className='btn primary' onClick={() => { navigate('/') }}>Go back to home</button>
+      </>
     );
 };
