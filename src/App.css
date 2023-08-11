@@ -94,8 +94,10 @@
 }
 
 .card-container {
+  align-items: center;
+  font-size: 18px;
   display: flex;
-  justify-content: center;
+  justify-content: left;
 }
 
 .App h1 {
@@ -148,10 +150,10 @@ th, td {
 }
 
 .navbar-section {
-  max-width: 100%;
   background: #F7F8FB;
-  display: flex;
   justify-content: center;
+  place-items: center;
+  
 }
 
 .navbar {
@@ -159,6 +161,8 @@ th, td {
   display: flex;
   background: #F7F8FB;
   justify-content: center;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .navbar a {
@@ -261,6 +265,11 @@ body {
   color: #FF7300;
 }
 
+.card img{
+  width: 20px;
+  height: 20px;
+}
+
 .card h3{
   font-size: medium;
 }
@@ -324,7 +333,7 @@ h3 {
 }
 
 .link-logo-image-small {
-  height: 20px;
+  height: 10px;
   padding-left: 15px;
   padding-right: 15px;
 }

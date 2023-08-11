@@ -60,16 +60,16 @@ const Nav: React.FunctionComponent<{}> = () => {
             }
           </div>
           <div className='right-panel'>
-                    <div className="avatar-dropdown">
-  <div className="avatar">
-  <img alt='react-logo' src={ USER_LOGO } className='link-logo-image-small logo'/>
-    <span className="arrow small">&#9660;</span>
-  </div>
-  <ul className="dropdown-menu">
-    <li><a href="#/" onClick={() => signOut()}>Sign out</a></li>
-  </ul>
-</div>
-
+            <a href='#/'>{state?.username}</a>
+            <div className="avatar-dropdown">
+              <div className="avatar">
+                <img alt='react-logo' src={ USER_LOGO } className='link-logo-image-small logo'/>
+                <span className="arrow small">&#9660;</span>
+              </div>
+              <ul className="dropdown-menu">
+                <li><a href="#/" onClick={() => signOut()}>Sign out</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
