@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ASGARDEO_LOGO from '../images/asgardeo-logo-transparent.png';
+import USER_LOGO from '../images/user.png';
 import routesConfig from '../configs/routes-config';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '@asgardeo/auth-react';
@@ -59,12 +60,16 @@ const Nav: React.FunctionComponent<{}> = () => {
             }
           </div>
           <div className='right-panel'>
-            { state.isAuthenticated &&
-              <>
-                <a href='#/'>{state?.username}</a>
-                <button className='btn-outline' onClick={() => signOut()}>Sign out</button>
-              </>
-            }
+                    <div className="avatar-dropdown">
+  <div className="avatar">
+  <img alt='react-logo' src={ USER_LOGO } className='link-logo-image-small logo'/>
+    <span className="arrow small">&#9660;</span>
+  </div>
+  <ul className="dropdown-menu">
+    <li><a href="#/" onClick={() => signOut()}>Sign out</a></li>
+  </ul>
+</div>
+
           </div>
         </div>
       </div>

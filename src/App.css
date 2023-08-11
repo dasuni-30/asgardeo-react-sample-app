@@ -46,11 +46,12 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: rgb(0, 0, 0);
-  height: 650px;
+  height: 600px;
+  padding: 75px;
 }
 
 .App-header-length {
-  height: 550px;
+  height: 250px;
 }
 
 .App-section {
@@ -68,7 +69,11 @@
 }
 
 .App-section h3 {
-  font-weight: 200;
+  font-weight: 150;
+}
+
+.App-header-section h4 {
+  font-weight: 250;
 }
 
 .image-icon {
@@ -150,10 +155,9 @@ th, td {
 }
 
 .navbar {
-  max-width: 90%;
+  max-width: 100%;
   display: flex;
   background: #F7F8FB;
-  padding-left: 25px;
   justify-content: center;
 }
 
@@ -189,8 +193,12 @@ th, td {
   padding: 15px;
   text-align: left;
   display: flex;
-    justify-content: left; /* Centers the columns horizontally */
-    align-items: center; 
+  justify-content: left; /* Centers the columns horizontally */
+  align-items: center; 
+}
+
+.center-panel a{
+  width: 70px;
 }
 
 * {
@@ -239,12 +247,13 @@ body {
 /* Style the counter cards */
 .card {
   padding: 25px;
-  text-align: center;
+  text-align: left;
   background: #ffffff;
-  height: 175px;
+  height: 180px;
   display: grid;
-  border: 1px solid #FF7300;
+  border: 1px solid #ECECEC;
   border-radius: 0.5rem;
+  margin: 20px;
 }
 
 .card a{
@@ -254,7 +263,6 @@ body {
 
 .card h3{
   font-size: medium;
-  color: #FF7300;
 }
 
 .card p{
@@ -294,18 +302,25 @@ h3 {
 }
 
 .react-logo-image {
-  height: 60px;
+  height: 100px;
   padding: 30px;
 }
 
 .asgardeo-logo-image {
-  height: 60px;
-  padding: 30px;
+  height: 36px;
+  padding: 25px;
+
 }
 
 .asgardeo-logo-image-small {
   height: 20px;
   padding: 10px;
+}
+
+.link-logo-image {
+  height: 80px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .link-logo-image-small {
@@ -322,12 +337,12 @@ h3 {
   border: 2px solid #FF7300;
   background: #FF7300;
   color: rgb(255, 255, 255);
-  padding: 5px 10px;
+  padding: 10px 24px;
   font-size: 16px;
   cursor: pointer;
   border-radius: 500rem;
   font-size: small;
-  width: 150px;
+  width: 170px;
   margin: 2px;
 }
 
@@ -340,12 +355,12 @@ h3 {
   border: 2px solid #FF7300;
   background-color: #ffffff;
   color: #FF7300;
-  padding: 5px 10px;
+  padding: 10px 24px;
   font-size: 16px;
   cursor: pointer;
   border-radius: 500rem;
   font-size: small;
-  width: 150px;
+  width: 170px;
   margin: 2px;
 }
 
@@ -527,19 +542,19 @@ table.one-column-table tr {
 }
 
 .logo-container {
-  display: contents;
+  display: flex;
 }
 
 /* Apply styling to the columns */
 .container-column {
-  text-align: center;
+  align-items: center;
   font-size: 18px;
-  width: 100px;
-  height: 100px;
+  display: flex;
+  margin-top: 50px;
+  justify-content: center;
 }
 
 .container-column a {
-  padding: 15px;
   text-decoration: none;
   color: #000;
   font-size: small;
@@ -554,48 +569,57 @@ table.one-column-table tr {
   font-weight: 10;
 }
 
-/* Base styles for the avatar and dropdown */
 .avatar-dropdown {
   position: relative;
   display: inline-block;
 }
 
-/* Avatar image styling */
-.avatar img {
-  width: 20px; /* Adjust the size as needed */
-  height: 20px;
-  border-radius: 50%; /* To make it circular */
+.avatar {
+  display: flex;
+  align-items: center;
   cursor: pointer;
 }
 
-/* Dropdown content (hidden by default) */
-.dropdown-content {
-  display: none;
+.avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.arrow {
+  font-size: 8px;
+  transform: translateY(2px);
+}
+
+.dropdown-menu {
   position: absolute;
-  background-color: #f9f9f9;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  padding: 8px;
-  z-index: 1;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-/* Dropdown item styles */
-.dropdown-content li {
-  list-style-type: none;
-}
-
-/* Show the dropdown when hovering over the avatar */
-.avatar-dropdown:hover .dropdown-content {
+.avatar-dropdown:hover .dropdown-menu {
   display: block;
 }
 
-/* Optional: Style the links inside the dropdown */
-.dropdown-content a {
-  display: block;
-  padding: 8px 16px;
-  text-decoration: none;
+.dropdown-menu li {
+  padding: 0px 0px;
+}
+
+.dropdown-menu a {
   color: #333;
+  text-decoration: none;
+  display: block;
 }
 
-.dropdown-content a:hover {
-  background-color: #f1f1f1;
+.dropdown-menu a:hover {
+  background-color: #f5f5f5;
 }

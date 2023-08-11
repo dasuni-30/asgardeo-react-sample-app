@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { getUserDetails } from '../api/user-info';
 
 /**
  * API Call component.
@@ -15,12 +14,15 @@ const APICall: React.FunctionComponent<{}> = () => {
 
   const handleApiCall = () => {
     (async () => {
-      try {
-        const response = await getUserDetails();
-        setUserInfo(response);
-      } catch (error) {
-        // Log the error.
-      }
+      fetch('https://71fe9995-65a1-4e05-92a8-bc40749649d8-prod.e1-us-east-azure.choreoapis.dev/hmvi/demoapi/endpoint-9090-803/1.0.0/accounts')
+      .then((response) => response.json())
+      .then((data) => {
+         console.log(data);
+         setUserInfo(data);
+      })
+      .catch((err) => {
+         console.log(err.message);
+      });
     })();
   };
   
