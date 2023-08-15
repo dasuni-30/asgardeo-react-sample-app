@@ -110,6 +110,10 @@ REACT_APP_SIGN_UP_URL=<asgardeo-sign-up-url>
 
 # The application name for the Asgardeo application
 REACT_APP_APPLICATION_NAME=<application-name>
+
+# The organization name for the Asgardeo
+REACT_APP_ORG_NAME="dasuorg"
+
 ```
 
 5. Start the development server.
