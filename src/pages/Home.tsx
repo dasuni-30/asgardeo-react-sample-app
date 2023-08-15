@@ -36,7 +36,7 @@ export const Home: FunctionComponent = (): ReactElement => {
 
                 </div>
               </header>
-
+              <h3>What can we do next?</h3>
               <Cards></Cards>
               </>
             ) : (
@@ -63,7 +63,7 @@ export const Home: FunctionComponent = (): ReactElement => {
                   <br/>
                   <div className="container-column">
                     <a href='https://github.com/dasuni-30/asgardeo-react-sample-app'>
-                        <img alt='react-logo' src={ GITHUB_ICON } className='link-logo-image-small logo'/>
+                        <img alt='react-logo' src={ GITHUB_ICON } className='github-logo-image-small'/>
                     </a>
                     <a href='https://github.com/dasuni-30/asgardeo-react-sample-app'>
                       Explore the source code

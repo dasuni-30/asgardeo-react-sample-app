@@ -2,6 +2,7 @@ import { getUserDetails, updatePassword, updateUserDetails } from '../api/user-i
 import { ChangeEvent, useEffect, useState } from 'react';
 import $ from 'jquery'
 import { useAuthContext } from '@asgardeo/auth-react';
+import USER_LOGO from '../images/user.png'
 
 interface FormValues {
   username?: string;
@@ -10,6 +11,7 @@ interface FormValues {
   lastName?: string;
   id?: string;
   mfa?: string;
+  profileUrl?: string;
 }
 
 const initialFormValues: FormValues = {
@@ -18,7 +20,8 @@ const initialFormValues: FormValues = {
   givenName: '',
   lastName: '',
   id: '',
-  mfa: ''
+  mfa: '',
+  profileUrl: ''
 };
 interface PasswordFormValues {
   currentPassword?: string;
@@ -62,7 +65,9 @@ const Profile: React.FunctionComponent = () => {
         givenName: userInfo?.name?.givenName,
         lastName: userInfo?.name?.familyName,
         id: userInfo?.id,
-        mfa: userInfo?.[SCHEMA]?.preferredMFAOption != null && JSON.parse(userInfo?.[SCHEMA]?.preferredMFAOption)?.authenticationOption});
+        mfa: userInfo?.[SCHEMA]?.preferredMFAOption != null && JSON.parse(userInfo?.[SCHEMA]?.preferredMFAOption)?.authenticationOption,
+        profileUrl: userInfo?.profileUrl
+      });
 
       if (userInfo?.[SCHEMA]?.preferredMFAOption != null ) {
         $("select[name='mfa']").val(JSON.parse(userInfo?.[SCHEMA]?.preferredMFAOption)?.authenticationOption);
@@ -152,6 +157,9 @@ const Profile: React.FunctionComponent = () => {
       <div className='App-section'>
         <header className='App-header-sub-section'>
           <div>
+          <div className="avatar-large">
+                    <img alt='react-logo' src={ formValues?.profileUrl ?? USER_LOGO} className='link-logo-image circular-image'/>
+                  </div>
             <h1>User Profile</h1>
             <p className='p-description'>View and update the user profile.</p>
           </div>

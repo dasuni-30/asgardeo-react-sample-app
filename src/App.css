@@ -47,7 +47,7 @@
   font-size: calc(10px + 2vmin);
   color: rgb(0, 0, 0);
   height: 600px;
-  padding: 75px;
+  padding: 50px;
 }
 
 .App-header-length {
@@ -342,6 +342,12 @@ h3 {
   border-color: #FF7300;
 }
 
+.github-logo-image-small {
+  height: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 .btn {
   border: 2px solid #FF7300;
   background: #FF7300;
@@ -631,4 +637,9 @@ table.one-column-table tr {
 
 .dropdown-menu a:hover {
   background-color: #f5f5f5;
+}
+
+.circular-image {
+  border-radius: 50%;
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
 }
