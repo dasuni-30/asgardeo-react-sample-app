@@ -16,7 +16,7 @@ root.render(
       signOutRedirectURL: `${process.env.REACT_APP_CLIENT_BASE_URL}`,
       clientID: `${process.env.REACT_APP_CLIENT_ID}`,
       baseUrl: `${process.env.REACT_APP_ASGARDEO_BASE_URL}`,
-      scope: [ "openid","profile", "internal_login", "internal_user_mgt_view", "read_profile", "app_roles" ]
+      scope: [ "openid","profile", "internal_login", "internal_user_mgt_view", "app_roles" ]
   } }
 >
   <React.StrictMode>
