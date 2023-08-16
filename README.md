@@ -57,11 +57,12 @@ Add Application Roles
 <img src="./src/images/docs/application-roles-attribute.png" alt="Application role attribute" title="Application role attribute">
 
 Add Second Factor Authentication (Optional)
-Navigate to the Sign in methods of the application
-Add the second step authentication
+
+1. Navigate to the Sign in methods of the application
+
+2. Add the second step authentication
 
 <img src="./src/images/docs/application-sign-in-method.png" alt="Application signin method" title="Application signin method">
-
 
 
 ## 🚀 Getting Started
@@ -112,7 +113,7 @@ REACT_APP_SIGN_UP_URL=<asgardeo-sign-up-url>
 REACT_APP_APPLICATION_NAME=<application-name>
 
 # The organization name for the Asgardeo
-REACT_APP_ORG_NAME="dasuorg"
+REACT_APP_ORG_NAME=<org-name>
 
 ```
 
