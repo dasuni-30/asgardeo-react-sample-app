@@ -18,7 +18,7 @@ const cards: {
 }[]= [
         {
             'title': 'User Guide',
-            'description': 'Check out our user guide and we will guide you to integrate your applications with Asgardeo.',
+            'description': 'Check out our user guide and you will guide you to integrate your applications with Asgardeo.',
             'link': 'https://docs.google.com/document/d/1-yKHQgQE3-Pj5FRoBdOLf33u1Y41QWzNd3jdR6TVhIQ/edit#heading=h.mvq9fx4kf8ex',
             'icon': USER_GUIDE
         },
@@ -52,7 +52,7 @@ const Cards: React.FunctionComponent<{}> = () => {
                 </div>
                   <p className='p-description'>{card?.description}</p>
                   <p className='p-description'>
-                    <a href={card?.link} target='_blank' rel="noreferrer">Learn More</a>
+                    <a href={card?.link} target='_blank' rel="noreferrer">Check it out</a>
                   </p>
                 </div>
               </div>

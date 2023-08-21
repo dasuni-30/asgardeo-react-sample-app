@@ -155,55 +155,88 @@ const Profile: React.FunctionComponent = () => {
   return (
     <>
       <div className='App-section'>
+      <div className="two-column-grid">
+        <div className="column">
         <header className='App-header-sub-section'>
           <div>
           <div className="avatar-large">
                     <img alt='react-logo' src={ formValues?.profileUrl ?? USER_LOGO} className='link-logo-image circular-image'/>
                   </div>
-            <h1>User Profile</h1>
-            <p className='p-description'>View and update the user profile.</p>
+            <h1>{`${formValues?.givenName}` + ` ` + `${formValues?.lastName}`} </h1>
           </div>
+          <tr>
+          <td>
+            <p className='p-description'>Username: {formValues?.username}</p>
+            <p className='p-description'>User ID: {formValues?.id}</p>
+          </td>
+        </tr>
         </header>
+
+        <form onSubmit={handlePasswordSubmit}>
+          <div className='info-box'>
+          <div className="table-container">
+              <table className="one-column-table">
+            <h3>Change Password</h3>
+            <p className='p-description'>Update your password regularly and make sure it's unique.</p>
+              <tr>
+                <td>
+                  <label htmlFor='currentPassword'>Current Password:</label>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input
+                    type='password'
+                    id='currentPassword'
+                    name='currentPassword'
+                    onChange={handlePasswordChange}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label htmlFor='newPassword'>New Password:</label>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input
+                    type='password'
+                    id='newPassword'
+                    name='newPassword'
+                    onChange={handlePasswordChange}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td colSpan={2} className='tr-align-center'>
+                  <label htmlFor='hint'>
+                    Changing the password will result in the termination of the current session.
+                    You will have to login with the newly changed password.
+                  </label>
+              </td>
+              </tr>
+              <button className='btn margin-top' type='submit'>Update</button>
+            <tr>
+              <td colSpan={2} className='tr-padding tr-align-center'>
+                <div className='notification tr-align-center' id='successNotification'>
+                  <p className='p-description' id='notificationDescription'>Submission successful!</p>
+                </div>
+              </td>
+            </tr>
+            </table>
+            </div>
+            </div>
+        </form>
+        </div>
+        
+        <div className="column">
         <form onSubmit={handleSubmit}>
           <div className='info-box'>
             <div className="table-container">
               <table className="one-column-table">
                 <h3>Personal Info</h3>
                 <p className='p-description'>Update your user profile information.</p>
-                <tr>
-                  <td>
-                    <label htmlFor='username'>Username:</label>
-                  </td>
-                </tr>
-                <tr>
-                  <td colSpan={2} className='tr-align-center margin-bottom'>
-                    <input
-                      type='text'
-                      id='username'
-                      name='username'
-                      readOnly
-                      value={formValues?.username}
-                      onChange={handleChange}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td colSpan={2} className='tr-align-center'>
-                    <label htmlFor='userid'>User ID:</label>
-                  </td>
-                </tr>
-                <tr>
-                  <td colSpan={2} className='tr-align-center'>
-                    <input
-                      type='text'
-                      id='id'
-                      name='id'
-                      readOnly
-                      value={formValues?.id}
-                      onChange={handleChange}
-                    />
-                  </td>
-                </tr>
                 <tr>
                   <td colSpan={2} className='tr-align-center'>
                     <label htmlFor='email'>Email:</label>
@@ -271,65 +304,17 @@ const Profile: React.FunctionComponent = () => {
                     </select>
                   </td>
                 </tr>
+                <label htmlFor='hint'>
+                    Changing the password will result in the termination of the current session.
+                    You will need to log in again using the updated password.
+                  </label>
                 <button className='btn margin-top' type='submit'>Update</button>
               </table>
             </div> 
           </div>
         </form>
-        <form onSubmit={handlePasswordSubmit}>
-          <table className='user-profile-table'>
-          <div className='info-box'>
-            <h3>Change Password</h3>
-            <p className='p-description'>Update your password regularly and make sure it's unique.</p>
-              <tr>
-                <td>
-                  <label htmlFor='currentPassword'>Current Password:</label>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <input
-                    type='password'
-                    id='currentPassword'
-                    name='currentPassword'
-                    onChange={handlePasswordChange}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label htmlFor='newPassword'>New Password:</label>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <input
-                    type='password'
-                    id='newPassword'
-                    name='newPassword'
-                    onChange={handlePasswordChange}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td colSpan={2} className='tr-align-center'>
-                  <label htmlFor='hint'>
-                    Changing the password will result in the termination of the current session.
-                    You will have to login with the newly changed password.
-                  </label>
-              </td>
-              </tr>
-              <button className='btn margin-top' type='submit'>Update</button>
-            <tr>
-              <td colSpan={2} className='tr-padding tr-align-center'>
-                <div className='notification tr-align-center' id='successNotification'>
-                  <p className='p-description' id='notificationDescription'>Submission successful!</p>
-                </div>
-              </td>
-            </tr>
-            </div>
-          </table>
-        </form>
+        </div>
+      </div>
       </div>
     </>
   );

@@ -8,12 +8,13 @@ import { AuthProvider } from "@asgardeo/auth-react";
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+console.log(process.env.REACT_APP_BASE_URL);
 
 root.render(
   <AuthProvider
   config={ {
-      signInRedirectURL: `${process.env.REACT_APP_CLIENT_BASE_URL}`,
-      signOutRedirectURL: `${process.env.REACT_APP_CLIENT_BASE_URL}`,
+      signInRedirectURL: `${process.env.REACT_APP_BASE_URL}`,
+      signOutRedirectURL: `${process.env.REACT_APP_BASE_URL}`,
       clientID: `${process.env.REACT_APP_CLIENT_ID}`,
       baseUrl: `${process.env.REACT_APP_ASGARDEO_BASE_URL}`,
       scope: [ "openid","profile", "internal_login", "internal_user_mgt_view", "app_roles" ]

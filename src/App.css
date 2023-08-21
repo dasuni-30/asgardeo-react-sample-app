@@ -153,7 +153,6 @@ th, td {
   background: #F7F8FB;
   justify-content: center;
   place-items: center;
-  
 }
 
 .navbar {
@@ -284,9 +283,9 @@ h3 {
 
 .footer {
   background: #F7F8FB;
-  position: fixed;
   bottom: 0;
   width: 100%;
+  position: fixed;
 }
 
 .footer a {
@@ -318,6 +317,7 @@ h3 {
 .asgardeo-logo-image {
   height: 36px;
   padding: 25px;
+  padding-left: 10px;;
 
 }
 
@@ -423,11 +423,10 @@ code {
 
 .info-box {
   align-items: center;
-  padding: 50px;
+  padding: 5px;
   border: 1px solid #cccccc4b;
   border-radius: 8px;
-  width: 500px;
-  margin: 25px;
+  width: 600px;
 }
 
 .column {
@@ -490,9 +489,7 @@ select {
   height: 30px;
 
   /* Add some padding for better appearance */
-  padding: 15px;
-
-  margin-bottom: 15px;
+  padding: 5px;
 
   /* Border styles */
   border: 1px solid #ccc;
@@ -527,7 +524,6 @@ input:focus {
   display: flex;
   justify-content: center; /* Horizontally center the table */
   align-items: center; /* Vertically center the table */
-  height: 90vh; /* Set the height of the container to fill the viewport */
 }
 
 /* Apply general styling to the table */
@@ -631,7 +627,11 @@ table.one-column-table tr {
 .dropdown-menu a {
   color: #333;
   text-decoration: none;
-  display: block;
+  display: flex;
+  padding: 10px;
+  width: 70px;
+  align-content: left;
+  justify-content: left;
 }
 
 .dropdown-menu a:hover {
@@ -642,3 +642,14 @@ table.one-column-table tr {
   border-radius: 50%;
   object-fit: cover; /* Maintain aspect ratio and cover the container */
 }
+
+.two-column-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Equal width columns */
+  gap: 10px; /* Gap between columns */
+}
+
+.column {
+  padding: 5px;
+}
+

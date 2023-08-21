@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import endpointConfig from '../configs/endpoint-config';
 
 /**
  * API Call component.
  */
 const APICall: React.FunctionComponent<{}> = () => {
     const [ userInfo, setUserInfo ] = useState<any>();
+
+    const apiEndpoint = `${endpointConfig.api.endpoints.externalApi}`;
 
     const message = 
     'Initiate a request to an external API and retrieve the response.' +
@@ -14,14 +17,12 @@ const APICall: React.FunctionComponent<{}> = () => {
 
   const handleApiCall = () => {
     (async () => {
-      fetch('https://71fe9995-65a1-4e05-92a8-bc40749649d8-prod.e1-us-east-azure.choreoapis.dev/hmvi/demoapi/endpoint-9090-803/1.0.0/accounts')
+      fetch(apiEndpoint)
       .then((response) => response.json())
       .then((data) => {
-         console.log(data);
-         setUserInfo(data);
+        setUserInfo(data);
       })
       .catch((err) => {
-         console.log(err.message);
       });
     })();
   };
@@ -37,7 +38,7 @@ const APICall: React.FunctionComponent<{}> = () => {
           <br/>
           <h3>Output</h3>
           <pre id='contentToCopy'>
-              {JSON.stringify(userInfo, null, 2)}
+            {JSON.stringify(userInfo, null, 2)}
           </pre>
         </>
     )

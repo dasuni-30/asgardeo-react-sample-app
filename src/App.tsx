@@ -1,6 +1,6 @@
 import './App.css';
 import Nav from './components/Nav';
-import Profile from './components/Profile';
+import Profile from './pages/Profile';
 import { Home } from './pages/Home';
 import { NotFound } from './pages/NotFound';
 import { Resources } from './pages/Resources';

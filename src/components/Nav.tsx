@@ -52,21 +52,18 @@ const Nav: React.FunctionComponent<{}> = () => {
             <a href='#/' onClick={routeHomeChange}>Home</a>
             { 
               state.isAuthenticated
-              && <a href='#/' onClick={routeProfileChange}>Profile</a>
-            }
-            {
-              isResourcesAllowed
               && <a href='#/' onClick={routeResourcesChange}>API Call</a>
             }
           </div>
           <div className='right-panel'>
-            <a href='#/'>{state?.username}</a>
+            <a href='#/' onClick={routeProfileChange}>{state?.username}</a>
             <div className="avatar-dropdown">
               <div className="avatar">
                 <img alt='react-logo' src={ USER_LOGO } className='link-logo-image-small logo'/>
                 <span className="arrow small">&#9660;</span>
               </div>
               <ul className="dropdown-menu">
+                <li><a href="#/" onClick={routeProfileChange}>Profile</a></li>
                 <li><a href="#/" onClick={() => signOut()}>Sign out</a></li>
               </ul>
             </div>
