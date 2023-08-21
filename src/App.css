@@ -1,3 +1,7 @@
+:root {
+  --primary: #FF7300;
+}
+
 .App {
   text-align: center;
 }
@@ -261,7 +265,7 @@ body {
 
 .card a{
   text-decoration: none;
-  color: #FF7300;
+  color: var(--primary);
 }
 
 .card img{
@@ -339,7 +343,7 @@ h3 {
 }
 
 .link-logo-image-small:hover {
-  border-color: #FF7300;
+  border-color: var(--primary);
 }
 
 .github-logo-image-small {
@@ -349,8 +353,8 @@ h3 {
 }
 
 .btn {
-  border: 2px solid #FF7300;
-  background: #FF7300;
+  border: 2px solid var(--primary);
+  background: var(--primary);
   color: rgb(255, 255, 255);
   padding: 10px 24px;
   font-size: 16px;
@@ -367,9 +371,9 @@ h3 {
 }
 
 .btn-outline {
-  border: 2px solid #FF7300;
+  border: 2px solid var(--primary);
   background-color: #ffffff;
-  color: #FF7300;
+  color: var(--primary);
   padding: 10px 24px;
   font-size: 16px;
   cursor: pointer;
@@ -441,7 +445,7 @@ code {
   font-weight: bold;
   text-align: center;
   text-decoration: none;
-  background-color: #FF7300;
+  background-color: var(--primary);
   color: white;
   border: none;
   border-radius: 4px;
@@ -449,11 +453,11 @@ code {
 }
 
 .button:hover {
-  background-color: #FF7300;
+  background-color: var(--primary);
 }
 
 .button:active {
-  background-color: #FF7300;
+  background-color: var(--primary);
 }
 
 /* Styles for the input box */
@@ -503,7 +507,7 @@ input:hover {
 
 /* Focus effect */
 input:focus {
-  border-color: #FF7300;
+  border-color: var(--primary);
 }
 
 .App-header-sub-section {
