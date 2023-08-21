@@ -1,6 +1,7 @@
 const routesConfig = {
   profile: '/profile',
   resource: '/resource',
+  settings: '/settings',
   home: '',
 };
 

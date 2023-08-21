@@ -7,6 +7,7 @@ import { Resources } from './pages/Resources';
 import Footer from './components/Footer';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { AuthenticatedComponent, useAuthContext } from '@asgardeo/auth-react';
+import { Settings } from './pages/Settings';
 
 function App() {
 
@@ -38,6 +39,16 @@ function App() {
                             fallback={ <Home/> }
                         >
                             <Resources />
+                        </AuthenticatedComponent>
+                    }
+                />
+                 <Route
+                    path='/settings'
+                    element={ 
+                        <AuthenticatedComponent
+                            fallback={ <Home/> }
+                        >
+                            <Settings />
                         </AuthenticatedComponent>
                     }
                 />

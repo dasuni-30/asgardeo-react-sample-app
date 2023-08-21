@@ -24,6 +24,11 @@ const Nav: React.FunctionComponent<{}> = () => {
       navigate(path);
     }
 
+    const routeSettingsChange = () =>{ 
+      let path = routesConfig.settings; 
+      navigate(path);
+    }
+
     const routeHomeChange = () =>{ 
       let path = routesConfig.home; 
       navigate(path);
@@ -53,6 +58,11 @@ const Nav: React.FunctionComponent<{}> = () => {
             { 
               state.isAuthenticated
               && <a href='#/' onClick={routeResourcesChange}>API Call</a>
+            }
+            { 
+              isResourcesAllowed
+              && state.isAuthenticated
+              && <a href='#/' onClick={routeSettingsChange}>Settings</a>
             }
           </div>
           <div className='right-panel'>
