@@ -162,7 +162,7 @@ const Profile: React.FunctionComponent = () => {
           <div className="avatar-large">
                     <img alt='react-logo' src={ formValues?.profileUrl ?? USER_LOGO} className='link-logo-image circular-image'/>
                   </div>
-            <h1>{`${formValues?.givenName}` + ` ` + `${formValues?.lastName}`} </h1>
+            <h1>{`${formValues?.givenName} ${formValues?.lastName}`} </h1>
           </div>
           <tr>
           <td>
