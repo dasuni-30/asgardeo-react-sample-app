@@ -15,66 +15,64 @@ import Cards from '../components/Cards';
  */
 export const Home: FunctionComponent = (): ReactElement => {
 
-    const { state, signIn } = useAuthContext();
+  const { state, signIn } = useAuthContext();
 
-    const signUpURL = `${process.env.REACT_APP_SIGN_UP_URL}${process.env.REACT_APP_CLIENT_ID} &sp=${process.env.REACT_APP_APPLICATION_NAME} &redirect_url=${process.env.REACT_APP_CLIENT_BASE_URL}`;
+  const signUpURL = `${process.env.REACT_APP_SIGN_UP_URL}${process.env.REACT_APP_CLIENT_ID} &sp=${process.env.REACT_APP_APPLICATION_NAME} &redirect_url=${process.env.REACT_APP_CLIENT_BASE_URL}`;
 
-    return (
-        <div className='App'>
-          {
-            state?.isAuthenticated
-            ? (
-              <>
-              <header className='App-header-section App-header-length'>
-                <div>
-                  <div className="avatar-large">
-                    <img alt='react-logo' src={ USER_LOGO } className='link-logo-image'/>
-                  </div>
-                  <h1 className='p-description'>Hello <b>{state?.username}</b></h1>
-                  <h4>Welcome to the React + Asgardeo demonstration app!</h4>
-                  <p className='p-description'>From here on you can experience the basic business application use cases integrated with Asgardeo for user profile management and other capabilities.</p>
-
+  return (
+    <div className='App'>
+      {
+        state?.isAuthenticated
+        ? (
+          <>
+            <header className='App-header-section App-header-length'>
+              <div>
+                <div className="avatar-large">
+                  <img alt='react-logo' src={ USER_LOGO } className='link-logo-image'/>
                 </div>
-              </header>
-              <h3>What can you do next?</h3>
-              <Cards></Cards>
-              </>
-            ) : (
-              <header className='App-header-section'>
-                <div>
-                  <div className="container">
-                    <div className="logo-container">
-                      <img alt='react-logo' src={ REACT_LOGO } className='react-logo-image logo'/>
-                  </div>
-                </div>
-                  <div className='logo-container'>
-                    <h1>Enhance your application’s IAM experience with </h1>
-                    <img alt='react-logo' src={ ASGARDEO_LOGO } className='asgardeo-logo-image'/>
-                  </div>
-                  <p className='p-description'>
-                    This sample demonstrates the authentication flow of a React application using Asgardeo.
-                  </p>
-                  <div className='button-container'>
-                    <button className='btn' onClick={() => signIn()}>Sign In</button>
-                    <a href={signUpURL}>
-                      <button className='btn-outline large-button'>Create an account</button>
-                    </a>
-                  </div>
-                  <br/>
-                  <br/>
-                  <div className="container-column">
-                    <a href='https://github.com/dasuni-30/asgardeo-react-sample-app'>
-                        <img alt='react-logo' src={ GITHUB_ICON } className='github-logo-image-small'/>
-                    </a>
-                    <a href='https://github.com/dasuni-30/asgardeo-react-sample-app'>
-                      Explore the source code
-                    </a>
-                </div>
-                  
-                </div>
-              </header>
-            )
-          }
-        </div>
-    );
+                <h1 className='p-description'>Hello <b>{state?.username}</b></h1>
+                <h4>Welcome to the React + Asgardeo demonstration app!</h4>
+                <p className='p-description'>From here on you can experience the basic business application use cases integrated with Asgardeo for user profile management and other capabilities.</p>
+              </div>
+            </header>
+            <h3>What can you do next?</h3>
+            <Cards></Cards>
+          </>
+        ) : (
+          <header className='App-header-section'>
+            <div>
+              <div className="container">
+                <div className="logo-container">
+                  <img alt='react-logo' src={ REACT_LOGO } className='react-logo-image logo'/>
+              </div>
+            </div>
+              <div className='logo-container'>
+                <h1>Enhance your application’s IAM experience with </h1>
+                <img alt='react-logo' src={ ASGARDEO_LOGO } className='asgardeo-logo-image'/>
+              </div>
+              <p className='p-description'>
+                This sample demonstrates the authentication flow of a React application using Asgardeo.
+              </p>
+              <div className='button-container'>
+                <button className='btn' onClick={() => signIn()}>Sign In</button>
+                <a href={signUpURL}>
+                  <button className='btn-outline large-button'>Create an account</button>
+                </a>
+              </div>
+              <br/>
+              <br/>
+              <div className="container-column">
+                <a href='https://github.com/dasuni-30/asgardeo-react-sample-app'>
+                    <img alt='react-logo' src={ GITHUB_ICON } className='github-logo-image-small'/>
+                </a>
+                <a href='https://github.com/dasuni-30/asgardeo-react-sample-app'>
+                  Explore the source code
+                </a>
+            </div>
+            </div>
+          </header>
+        )
+      }
+    </div>
+  );
 };

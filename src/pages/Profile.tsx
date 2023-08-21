@@ -155,168 +155,167 @@ const Profile: React.FunctionComponent = () => {
   return (
     <>
       <div className='App-section'>
-      <div className="two-column-grid">
-        <div className="column">
-        <header className='App-header-sub-section'>
-          <div>
-          <div className="avatar-large">
-                    <img alt='react-logo' src={ formValues?.profileUrl ?? USER_LOGO} className='link-logo-image circular-image'/>
-                  </div>
-            <h1>{`${formValues?.givenName} ${formValues?.lastName}`} </h1>
-          </div>
-          <tr>
-          <td>
-            <p className='p-description'>Username: {formValues?.username}</p>
-            <p className='p-description'>User ID: {formValues?.id}</p>
-          </td>
-        </tr>
-        </header>
-
-        <form onSubmit={handlePasswordSubmit}>
-          <div className='info-box'>
-          <div className="table-container">
-              <table className="one-column-table">
-            <h3>Change Password</h3>
-            <p className='p-description'>Update your password regularly and make sure it's unique.</p>
-              <tr>
-                <td>
-                  <label htmlFor='currentPassword'>Current Password:</label>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <input
-                    type='password'
-                    id='currentPassword'
-                    name='currentPassword'
-                    onChange={handlePasswordChange}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label htmlFor='newPassword'>New Password:</label>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <input
-                    type='password'
-                    id='newPassword'
-                    name='newPassword'
-                    onChange={handlePasswordChange}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td colSpan={2} className='tr-align-center'>
-                  <label htmlFor='hint'>
-                    Changing the password will result in the termination of the current session.
-                    You will have to login with the newly changed password.
-                  </label>
-              </td>
-              </tr>
-              <button className='btn margin-top' type='submit'>Update</button>
+        <div className="two-column-grid">
+          <div className="column">
+          <header className='App-header-sub-section'>
+            <div>
+              <div className="avatar-large">
+                <img alt='react-logo' src={ formValues?.profileUrl ?? USER_LOGO} className='link-logo-image circular-image'/>
+              </div>
+              <h1>{`${formValues?.givenName} ${formValues?.lastName}`} </h1>
+            </div>
             <tr>
-              <td colSpan={2} className='tr-padding tr-align-center'>
-                <div className='notification tr-align-center' id='successNotification'>
-                  <p className='p-description' id='notificationDescription'>Submission successful!</p>
-                </div>
+              <td>
+                <p className='p-description'>Username: {formValues?.username}</p>
+                <p className='p-description'>User ID: {formValues?.id}</p>
               </td>
             </tr>
-            </table>
+          </header>
+          <form onSubmit={handlePasswordSubmit}>
+            <div className='info-box'>
+              <div className="table-container">
+                <table className="one-column-table">
+                  <h3>Change Password</h3>
+                  <p className='p-description'>Update your password regularly and make sure it's unique.</p>
+                  <tr>
+                    <td>
+                      <label htmlFor='currentPassword'>Current Password:</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input
+                        type='password'
+                        id='currentPassword'
+                        name='currentPassword'
+                        onChange={handlePasswordChange}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label htmlFor='newPassword'>New Password:</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input
+                        type='password'
+                        id='newPassword'
+                        name='newPassword'
+                        onChange={handlePasswordChange}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colSpan={2} className='tr-align-center'>
+                      <label htmlFor='hint'>
+                        Changing the password will result in the termination of the current session.
+                        You will have to login with the newly changed password.
+                      </label>
+                    </td>
+                  </tr>
+                  <button className='btn margin-top' type='submit'>Update</button>
+                  <tr>
+                    <td colSpan={2} className='tr-padding tr-align-center'>
+                      <div className='notification tr-align-center' id='successNotification'>
+                        <p className='p-description' id='notificationDescription'>Submission successful!</p>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
             </div>
-            </div>
-        </form>
+          </form>
         </div>
         
         <div className="column">
-        <form onSubmit={handleSubmit}>
-          <div className='info-box'>
-            <div className="table-container">
-              <table className="one-column-table">
-                <h3>Personal Info</h3>
-                <p className='p-description'>Update your user profile information.</p>
-                <tr>
-                  <td colSpan={2} className='tr-align-center'>
-                    <label htmlFor='email'>Email:</label>
-                  </td>
-                </tr>
-                <tr>
-                  <td colSpan={2} className='tr-align-center'>
-                    <input
-                      type='text'
-                      id='email'
-                      name='email'
-                      readOnly
-                      value={formValues?.email}
-                      onChange={handleChange}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td colSpan={2} className='tr-align-center'>
-                    <label htmlFor='givenName'>First Name:</label>
-                  </td>
-                </tr>
-                <tr>
-                  <td colSpan={2} className='tr-align-center'>
-                    <input
-                      type='text'
-                      id='givenName'
-                      name='givenName'
-                      value={formValues?.givenName}
-                      onChange={handleChange}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td colSpan={2} className='tr-align-center'>
-                    <label htmlFor='lastName'>Last Name:</label>
-                  </td>
-                </tr>
-                <tr>
-                  <td colSpan={2} className='tr-align-center'>
-                    <input
-                      type='text'
-                      id='lastName'
-                      name='lastName'
-                      value={formValues?.lastName}
-                      onChange={handleChange}
-                    />
-                  </td>
-                </tr>
-                <br/>
-                <h3>Security Methods</h3>
-                <p className='p-description'>Secure your account by setting two factor authentication.</p>
-                <tr>
-                  <td colSpan={2} className='tr-align-center'>
-                    <label>Second Factor Authentication: </label>
-                  </td>
-                </tr>
-                <tr>
-                  <td colSpan={2} className='tr-align-center'>
-                    <select id='mfa' name='mfa' onChange={handleSelect}>
-                      <option value='false'>None</option>
-                      <option value='email-otp-authenticator'>Email OTP</option>
-                      <option value='SMSOTP'>SMS OTP</option>
-                      <option value='totp'>TOTP</option>
-                    </select>
-                  </td>
-                </tr>
-                <label htmlFor='hint'>
+          <form onSubmit={handleSubmit}>
+            <div className='info-box'>
+              <div className="table-container">
+                <table className="one-column-table">
+                  <h3>Personal Info</h3>
+                  <p className='p-description'>Update your user profile information.</p>
+                  <tr>
+                    <td colSpan={2} className='tr-align-center'>
+                      <label htmlFor='email'>Email:</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colSpan={2} className='tr-align-center'>
+                      <input
+                        type='text'
+                        id='email'
+                        name='email'
+                        readOnly
+                        value={formValues?.email}
+                        onChange={handleChange}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colSpan={2} className='tr-align-center'>
+                      <label htmlFor='givenName'>First Name:</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colSpan={2} className='tr-align-center'>
+                      <input
+                        type='text'
+                        id='givenName'
+                        name='givenName'
+                        value={formValues?.givenName}
+                        onChange={handleChange}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colSpan={2} className='tr-align-center'>
+                      <label htmlFor='lastName'>Last Name:</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colSpan={2} className='tr-align-center'>
+                      <input
+                        type='text'
+                        id='lastName'
+                        name='lastName'
+                        value={formValues?.lastName}
+                        onChange={handleChange}
+                      />
+                    </td>
+                  </tr>
+                  <br/>
+                  <h3>Security Methods</h3>
+                  <p className='p-description'>Secure your account by setting two factor authentication.</p>
+                  <tr>
+                    <td colSpan={2} className='tr-align-center'>
+                      <label>Second Factor Authentication: </label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colSpan={2} className='tr-align-center'>
+                      <select id='mfa' name='mfa' onChange={handleSelect}>
+                        <option value='false'>None</option>
+                        <option value='email-otp-authenticator'>Email OTP</option>
+                        <option value='SMSOTP'>SMS OTP</option>
+                        <option value='totp'>TOTP</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <label htmlFor='hint'>
                     Changing the password will result in the termination of the current session.
                     You will need to log in again using the updated password.
                   </label>
-                <button className='btn margin-top' type='submit'>Update</button>
-              </table>
-            </div> 
-          </div>
-        </form>
+                  <button className='btn margin-top' type='submit'>Update</button>
+                </table>
+              </div> 
+            </div>
+          </form>
         </div>
       </div>
-      </div>
-    </>
+    </div>
+  </>
   );
 };
 
