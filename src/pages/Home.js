@@ -1,4 +1,3 @@
-import { FunctionComponent, ReactElement } from 'react';
 import ASGARDEO_LOGO from '../images/asgardeo-logo-transparent.png';
 import GITHUB_ICON from '../images/github.png';
 import USER_LOGO from '../images/user.png'
@@ -13,7 +12,7 @@ import Cards from '../components/Cards';
  *
  * @return {React.ReactElement}
  */
-export const Home: FunctionComponent = (): ReactElement => {
+export const Home = () => {
 
   const { state, signIn } = useAuthContext();
 

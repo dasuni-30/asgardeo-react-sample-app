@@ -3,7 +3,7 @@ import endpointConfig from '../configs/endpoint-config';
 
 const meEndpoint = `${endpointConfig.api.endpoints.me}`;
 
-const auth: any = AsgardeoSPAClient.getInstance();
+const auth = AsgardeoSPAClient.getInstance();
 
 /**
  * API Call to fetch user details.
@@ -20,10 +20,10 @@ export const getUserDetails = () => {
     };
 
     return auth.httpRequest(requestConfig)
-    .then((response: any) => {
+    .then((response) => {
         return response.data;
     })
-    .catch((error: any) => {
+    .catch((error) => {
         throw new Error('Failed to fetch user profile.');
     });
 };
@@ -31,7 +31,7 @@ export const getUserDetails = () => {
 /**
  * API Call to update user details.
  */
-export async function updateUserDetails(body: any) {
+export async function updateUserDetails(body) {
 
     const requestConfig = {
         headers: {
@@ -44,10 +44,10 @@ export async function updateUserDetails(body: any) {
     };
 
     return auth.httpRequest(requestConfig)
-    .then((response: any) => {
+    .then((response) => {
         return response.data;
     })
-    .catch((error: any) => {
+    .catch((error) => {
         throw new Error('Failed to update user profile.');
     });
   }
@@ -55,7 +55,7 @@ export async function updateUserDetails(body: any) {
 /**
  * API Call update the password.
  */
-export async function updatePassword(currentPassword: any, username: any, newPassword: any) {
+export async function updatePassword(currentPassword, username, newPassword) {
 
 const requestConfig = {
     headers: {
@@ -85,10 +85,10 @@ const requestConfig = {
 };
 
 return auth.httpRequest(requestConfig)
-.then((response: any) => {
+.then((response) => {
     return response.data;
 })
-.catch((error: any) => {
+.catch((error) => {
     throw new Error('Failed to update the password.');
 });
 }

@@ -1,7 +1,6 @@
 :root {
   --primary: #FF7300;
 }
-
 .App {
   text-align: center;
 }
@@ -40,6 +39,7 @@
     transform: rotate(360deg);
   }
 }
+
 
 /* Custom Styles */
 
@@ -278,7 +278,8 @@ body {
 }
 
 .card p{
-  font-size: small;
+  font-size: .9em;
+  color: rgba(0,0,0,.4);
 }
 
 h3 {
@@ -406,7 +407,7 @@ pre {
   line-height: 1.4;
   overflow-x: auto;
   white-space: pre-wrap;
-  width: 60%;
+  width: 700px;
   min-height: 100px;
   text-align: left;
   border-radius: 8px;
@@ -556,6 +557,14 @@ table.one-column-table tr {
   align-items: center; /* Centers the columns vertically */
 }
 
+.container-center {
+  display: flex;
+  justify-content: center; /* Centers the columns horizontally */
+  align-items: center; /* Centers the columns vertically */
+  flex-direction: column;
+  width: 800px;
+}
+
 .logo-container {
   display: flex;
 }
@@ -656,4 +665,5 @@ table.one-column-table tr {
 .column {
   padding: 5px;
 }
+
 

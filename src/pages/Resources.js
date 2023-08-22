@@ -1,4 +1,3 @@
-import { FunctionComponent, ReactElement } from 'react';
 import APICall from '../components/APICall';
 
 /**
@@ -8,7 +7,7 @@ import APICall from '../components/APICall';
  *
  * @return {React.ReactElement}
  */
-export const Resources: FunctionComponent = (): ReactElement => {
+export const Resources = () => {
 
   return (
     <div className='App-section'>

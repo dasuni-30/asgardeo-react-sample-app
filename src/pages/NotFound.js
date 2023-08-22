@@ -1,4 +1,3 @@
-import { FunctionComponent, ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 /**
@@ -8,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
  *
  * @return {React.ReactElement}
  */
-export const NotFound: FunctionComponent = (): ReactElement => {
+export const NotFound = () => {
 
     const navigate = useNavigate();
 

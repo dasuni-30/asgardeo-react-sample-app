@@ -6,9 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from "@asgardeo/auth-react";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById('root')
 );
-console.log(process.env.REACT_APP_BASE_URL);
 
 root.render(
   <AuthProvider
@@ -19,9 +18,9 @@ root.render(
       baseUrl: `${process.env.REACT_APP_ASGARDEO_BASE_URL}`,
       scope: [ "openid","profile", "internal_login", "internal_user_mgt_view", "app_roles" ]
   } }
->
+  >
   <React.StrictMode>
-    <App />
+    <App/>
   </React.StrictMode>
 </AuthProvider>
   

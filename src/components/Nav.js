@@ -8,9 +8,9 @@ import { useAuthContext } from '@asgardeo/auth-react';
 /**
  * Nav bar component.
  */
-const Nav: React.FunctionComponent<{}> = () => {
+const Nav = () => {
     const { state, signOut, getDecodedIDToken } = useAuthContext();
-    const [ isResourcesAllowed, setIsResourcesAllowed ] = useState<boolean>();
+    const [ isResourcesAllowed, setIsResourcesAllowed ] = useState();
 
     const navigate = useNavigate();
 

@@ -4,8 +4,8 @@ import endpointConfig from '../configs/endpoint-config';
 /**
  * API Call component.
  */
-const APICall: React.FunctionComponent<{}> = () => {
-  const [ userInfo, setUserInfo ] = useState<any>();
+const APICall = () => {
+  const [ userInfo, setUserInfo ] = useState();
 
   const apiEndpoint = `${endpointConfig.api.endpoints.externalApi}`;
 
@@ -28,10 +28,8 @@ const APICall: React.FunctionComponent<{}> = () => {
   };
   
   return (
-    <>
-      <pre id='contentToCopy'>
-        {message}
-      </pre>
+    <div className='container-center'>
+      {message}
       <div>
         <button className='btn' onClick={handleApiCall}>Invoke API</button>
       </div>
@@ -40,7 +38,7 @@ const APICall: React.FunctionComponent<{}> = () => {
       <pre id='contentToCopy'>
         {JSON.stringify(userInfo, null, 2)}
       </pre>
-    </>
+    </div>
   )
 }
 

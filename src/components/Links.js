@@ -3,7 +3,7 @@ import GITHUB_ICON from '../images/github.png';
 import USER_GUIDE from '../images/user.png';
 import DOCUMENTATION_LOGO from '../images/docs.png';
 
-const Links: React.FunctionComponent<{}> = () => {
+const Links = () => {
   return (
     <div className='row'>
       <div className="container">

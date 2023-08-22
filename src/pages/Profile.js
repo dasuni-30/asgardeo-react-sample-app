@@ -4,52 +4,23 @@ import $ from 'jquery'
 import { useAuthContext } from '@asgardeo/auth-react';
 import USER_LOGO from '../images/user.png'
 
-interface FormValues {
-  username?: string;
-  email?: string;
-  givenName?: string;
-  lastName?: string;
-  id?: string;
-  mfa?: string;
-  profileUrl?: string;
-}
-
-const initialFormValues: FormValues = {
-  username: '',
-  email: '',
-  givenName: '',
-  lastName: '',
-  id: '',
-  mfa: '',
-  profileUrl: ''
-};
-interface PasswordFormValues {
-  currentPassword?: string;
-  newPassword?: string;
-}
-
-const initialPasswordFormValues: PasswordFormValues = {
-  currentPassword: '',
-  newPassword: ''
-};
-
 /**
  * Profile component.
  */
-const Profile: React.FunctionComponent = () => {
+const Profile = () => {
 
-  const [formValues, setFormValues] = useState<FormValues>(initialFormValues);
-  const [passwordFormValues, setpasswordFormValues] = useState<PasswordFormValues>(initialPasswordFormValues);
+  const [ formValues, setFormValues ] = useState();
+  const [ passwordFormValues, setpasswordFormValues ] = useState();
   const { signOut } = useAuthContext();
-  const [ userInfo, setUserInfo ] = useState<any>();
+  const [ userInfo, setUserInfo ] = useState();
 
-  const SCHEMA: string=  'urn:scim:wso2:schema';
+  const SCHEMA =  'urn:scim:wso2:schema';
   
   // Get the user details.
   useEffect(() => {
-    (async () => {
+    ( () => {
       try {
-        const response = await getUserDetails();
+        const response = getUserDetails();
         setUserInfo(response);
       } catch (error) {
         // Log the error.
@@ -75,7 +46,7 @@ const Profile: React.FunctionComponent = () => {
     }
   },[ userInfo ]);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setFormValues((prevFormValues) => ({
       ...prevFormValues,
@@ -83,7 +54,7 @@ const Profile: React.FunctionComponent = () => {
     }));
   };
 
-  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handlePasswordChange = (event) => {
     const { name, value } = event.target;
     setpasswordFormValues((prevFormValues) => ({
       ...prevFormValues,
@@ -91,7 +62,7 @@ const Profile: React.FunctionComponent = () => {
     }));
   };
 
-  function handleSelect(event: ChangeEvent<HTMLSelectElement>): void {
+  function handleSelect(event) {
     const { name, value } = event.target;
     setFormValues((prevFormValues) => ({
       ...prevFormValues,
@@ -99,7 +70,7 @@ const Profile: React.FunctionComponent = () => {
     }));
   }
 
-  const handleSubmit = async (event: React.FormEvent) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     let _formData = {
       ...userInfo,
@@ -116,7 +87,7 @@ const Profile: React.FunctionComponent = () => {
     }
   };
 
-  const handlePasswordSubmit = async (event: React.FormEvent) => {
+  const handlePasswordSubmit = async (event) => {
     event.preventDefault();
     console.log(passwordFormValues)
     try {
@@ -124,13 +95,13 @@ const Profile: React.FunctionComponent = () => {
         passwordFormValues?.currentPassword,
         `DEFAULT/${userInfo?.userName?.split('/')[1]}`,
         passwordFormValues?.newPassword
-      ).then((response: any) => {
+      ).then((response) => {
         if (response.status && response.status === 200) {
           showNotification('Password update successful.');
         }
         signOut();
     })
-    .catch((error: any) => {
+    .catch((error) => {
       if (!error.response || error.response.status === 401) {
         showNotification('Error in updating the password.');
       }
@@ -143,7 +114,7 @@ const Profile: React.FunctionComponent = () => {
     }
   };
 
-  function showNotification(message: string) {
+  function showNotification(message) {
     var notification = document.getElementById('successNotification');
     notification?.classList.add('show');
     $('#notificationDescription').text(message)

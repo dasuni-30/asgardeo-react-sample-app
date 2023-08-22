@@ -3,19 +3,7 @@ import GITHUB_ICON from '../images/github.png';
 import USER_GUIDE from '../images/user-guide.png';
 import DOCUMENTATION_LOGO from '../images/docs.png';
 
-type Card = {
-  title: string;
-  description: string;
-  link: string;
-  icon: string;
-};
-
-const cards: {
-  title: string;
-  description: string;
-  link: string;
-  icon: string;
-}[]= [
+const cards = [
   {
       'title': 'User Guide',
       'description': 'Check out our user guide and you will guide you to integrate your applications with Asgardeo.',
@@ -39,10 +27,10 @@ const cards: {
 /**
  * Card component.
  */
-const Cards: React.FunctionComponent<{}> = () => {
+const Cards = () => {
   return (
     <div className='row'>
-      {cards.map((card: Card) => {
+      {cards.map((card) => {
         return (
           <div className='column'>
             <div className='card'>

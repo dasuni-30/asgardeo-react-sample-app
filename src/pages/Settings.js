@@ -1,5 +1,3 @@
-import { FunctionComponent, ReactElement } from 'react';
-
 /**
  * Settings page for the Sample.
  *
@@ -7,7 +5,7 @@ import { FunctionComponent, ReactElement } from 'react';
  *
  * @return {React.ReactElement}
  */
-export const Settings: FunctionComponent = (): ReactElement => {
+export const Settings = () => {
 
   return (
     <div className='App-section'>
