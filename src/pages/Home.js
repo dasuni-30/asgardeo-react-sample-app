@@ -29,9 +29,9 @@ export const Home = () => {
                 <div className="avatar-large">
                   <img alt='react-logo' src={ USER_LOGO } className='link-logo-image'/>
                 </div>
-                <h1 className='p-description'>Hello <b>{state?.username}</b></h1>
+                <h1>Hello <b>{state?.username}</b></h1>
                 <h4>Welcome to the React + Asgardeo demonstration app!</h4>
-                <p className='p-description'>From here on you can experience the basic business application use cases integrated with Asgardeo for user profile management and other capabilities.</p>
+                <p className='p-description justified-text max-width'>From here on you can experience the basic business application use cases integrated with Asgardeo for user profile management and other capabilities.</p>
               </div>
             </header>
             <h3>What can you do next?</h3>
@@ -49,7 +49,7 @@ export const Home = () => {
                 <h1>Enhance your application’s IAM experience with </h1>
                 <img alt='react-logo' src={ ASGARDEO_LOGO } className='asgardeo-logo-image'/>
               </div>
-              <p className='p-description'>
+              <p className='p-description justified-text'>
                 This sample demonstrates the authentication flow of a React application using Asgardeo.
               </p>
               <div className='button-container'>
@@ -58,8 +58,6 @@ export const Home = () => {
                   <button className='btn-outline large-button'>Create an account</button>
                 </a>
               </div>
-              <br/>
-              <br/>
               <div className="container-column">
                 <a href='https://github.com/dasuni-30/asgardeo-react-sample-app'>
                     <img alt='react-logo' src={ GITHUB_ICON } className='github-logo-image-small'/>

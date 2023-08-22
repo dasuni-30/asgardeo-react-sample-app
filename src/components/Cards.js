@@ -35,15 +35,15 @@ const Cards = () => {
           <div className='column'>
             <div className='card'>
               <div className="card-container">
-                <img alt='react-logo' src={ card?.icon} className='link-logo-image-small logo'/>
+                <img alt='react-logo' src={ card?.icon} className='link-logo-image-small'/>
                 <h3>
                   { card?.title }
                 </h3>
               </div>
-              <p className='p-description'>
+              <p>
                 {card?.description}
               </p>
-              <p className='p-description'>
+              <p>
                 <a href={card?.link} target='_blank' rel="noreferrer">Check it out</a>
               </p>
             </div>

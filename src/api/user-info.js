@@ -8,7 +8,7 @@ const auth = AsgardeoSPAClient.getInstance();
 /**
  * API Call to fetch user details.
  */
-export const getUserDetails = () => {
+export async function getUserDetails () {
 
     const requestConfig = {
         headers: {

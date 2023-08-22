@@ -18,9 +18,9 @@ const Profile = () => {
   
   // Get the user details.
   useEffect(() => {
-    ( () => {
+    (async () => {
       try {
-        const response = getUserDetails();
+        const response = await getUserDetails();
         setUserInfo(response);
       } catch (error) {
         // Log the error.
@@ -147,7 +147,7 @@ const Profile = () => {
               <div className="table-container">
                 <table className="one-column-table">
                   <h3>Change Password</h3>
-                  <p className='p-description'>Update your password regularly and make sure it's unique.</p>
+                  <p className='p-description justified-text'>Update your password regularly and make sure it's unique.</p>
                   <tr>
                     <td>
                       <label htmlFor='currentPassword'>Current Password:</label>
@@ -180,7 +180,7 @@ const Profile = () => {
                   </tr>
                   <tr>
                     <td colSpan={2} className='tr-align-center'>
-                      <label htmlFor='hint'>
+                      <label htmlFor='hint' className='label-hint'>
                         Changing the password will result in the termination of the current session.
                         You will have to login with the newly changed password.
                       </label>
@@ -206,7 +206,7 @@ const Profile = () => {
               <div className="table-container">
                 <table className="one-column-table">
                   <h3>Personal Info</h3>
-                  <p className='p-description'>Update your user profile information.</p>
+                  <p className='p-description justified-text'>Update your user profile information.</p>
                   <tr>
                     <td colSpan={2} className='tr-align-center'>
                       <label htmlFor='email'>Email:</label>
@@ -258,7 +258,7 @@ const Profile = () => {
                   </tr>
                   <br/>
                   <h3>Security Methods</h3>
-                  <p className='p-description'>Secure your account by setting two factor authentication.</p>
+                  <p className='p-description justified-text'>Secure your account by setting two factor authentication.</p>
                   <tr>
                     <td colSpan={2} className='tr-align-center'>
                       <label>Second Factor Authentication: </label>

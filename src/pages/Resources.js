@@ -14,7 +14,9 @@ export const Resources = () => {
       <header className='App-header-sub-section'>
         <div>
           <h1>External API</h1>
-          <p className='p-description'>Invoke an external API by clicking on the button below.</p>
+          <p className='p-description justified-text max-width'>
+            Invoke an external API and retrieve the resulting response.
+          </p>
         </div>
       </header>
       <APICall></APICall>
