@@ -46,8 +46,9 @@ export const Home = () => {
               </div>
             </div>
               <div className='logo-container'>
-                <h1>Enhance your application’s IAM experience with </h1>
-                <img alt='react-logo' src={ ASGARDEO_LOGO } className='asgardeo-logo-image'/>
+                <h1>Enhance your application’s IAM experience with 
+                  <img alt='react-logo' src={ ASGARDEO_LOGO } className='asgardeo-logo-image'/>
+                </h1>
               </div>
               <p className='p-description justified-text'>
                 This sample demonstrates the authentication flow of a React application using Asgardeo.

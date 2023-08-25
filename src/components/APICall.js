@@ -29,9 +29,9 @@ const APICall = () => {
   
   return (
     <div className='container-center'>
-      <p className='p-description max-width justified-text'>{message}</p>
+      <p className='p-description max-width'>{message}</p>
       <div>
-        <button className='btn' onClick={handleApiCall}>Invoke API</button>
+        <button className='btn btn-margin-top' onClick={handleApiCall}>Invoke API</button>
       </div>
       <br/>
       <h3>Output</h3>

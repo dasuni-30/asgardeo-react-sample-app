@@ -1,5 +1,5 @@
 import { getUserDetails, updatePassword, updateUserDetails } from '../api/user-info';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import $ from 'jquery'
 import { useAuthContext } from '@asgardeo/auth-react';
 import USER_LOGO from '../images/user.png'
@@ -127,22 +127,83 @@ const Profile = () => {
     <>
       <div className='App-section'>
         <div className="two-column-grid">
+
           <div className="column">
-          <header className='App-header-sub-section'>
-            <div>
-              <div className="avatar-large">
-                <img alt='react-logo' src={ formValues?.profileUrl ?? USER_LOGO} className='link-logo-image circular-image'/>
-              </div>
-              <h1>{`${formValues?.givenName} ${formValues?.lastName}`} </h1>
-            </div>
-            <tr>
-              <td>
-                <p className='p-description'>Username: {formValues?.username}</p>
-                <p className='p-description'>User ID: {formValues?.id}</p>
-              </td>
-            </tr>
-          </header>
-          <form onSubmit={handlePasswordSubmit}>
+            <div className='info-box'>
+              <header className='App-header-sub-section'>
+                  <div className="avatar-large">
+                    <img alt='react-logo' src={ formValues?.profileUrl ?? USER_LOGO} className='link-logo-image circular-image'/>
+                  </div>
+                  <h1>{`${formValues?.givenName} ${formValues?.lastName}`} </h1>
+                  <tr>
+                    <label>Username: <b>{formValues?.username}</b></label>
+                    <br/>
+                    <label>User ID: <b>{formValues?.id}</b></label>
+                  </tr>
+              </header>
+              <form onSubmit={handlePasswordSubmit}>
+                <div className="table-container">
+                  <table className="one-column-table">
+                    <h3>Personal Info</h3>
+                    <p className='p-description justified-text'>Update your user profile information.</p>
+                    <tr>
+                      <td colSpan={2} className='tr-align-center'>
+                        <label htmlFor='email'>Email:</label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colSpan={2} className='tr-align-center'>
+                        <input
+                          type='text'
+                          id='email'
+                          name='email'
+                          readOnly
+                          value={formValues?.email}
+                          onChange={handleChange}
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colSpan={2} className='tr-align-center'>
+                        <label htmlFor='givenName'>First Name:</label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colSpan={2} className='tr-align-center'>
+                        <input
+                          type='text'
+                          id='givenName'
+                          name='givenName'
+                          value={formValues?.givenName}
+                          onChange={handleChange}
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colSpan={2} className='tr-align-center'>
+                        <label htmlFor='lastName'>Last Name:</label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colSpan={2} className='tr-align-center'>
+                        <input
+                          type='text'
+                          id='lastName'
+                          name='lastName'
+                          value={formValues?.lastName}
+                          onChange={handleChange}
+                        />
+                      </td>
+                    </tr>
+                    <button className='btn margin-top' type='submit'>Update</button>
+                  </table>
+                </div>
+              </form>
+          </div>
+        </div>
+        
+        <div className="column">
+          <form onSubmit={handleSubmit}>
             <div className='info-box'>
               <div className="table-container">
                 <table className="one-column-table">
@@ -195,93 +256,34 @@ const Profile = () => {
                     </td>
                   </tr>
                 </table>
+                </div>
+                <div className="table-container">
+                  <table className="one-column-table">
+                    <h3>Second Factor Authentication</h3>
+                    <p className='p-description justified-text'>Secure your account by setting two factor authentication.</p>
+                    <tr>
+                      <td colSpan={2} className='tr-align-center'>
+                        <label>Select the Second Factor Authentication: </label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colSpan={2} className='tr-align-center'>
+                        <select id='mfa' name='mfa' onChange={handleSelect}>
+                          <option value='false'>None</option>
+                          <option value='email-otp-authenticator'>Email OTP</option>
+                          <option value='SMSOTP'>SMS OTP</option>
+                          <option value='totp'>TOTP</option>
+                        </select>
+                      </td>
+                    </tr>
+                    <label htmlFor='hint'>
+                      The selected seconf factor will be prompted for authentication in the login flow.
+                    </label>
+                    <br/>
+                    <button className='btn margin-top' type='submit'>Update</button>
+                  </table>
+                </div>
               </div>
-            </div>
-          </form>
-        </div>
-        
-        <div className="column">
-          <form onSubmit={handleSubmit}>
-            <div className='info-box'>
-              <div className="table-container">
-                <table className="one-column-table">
-                  <h3>Personal Info</h3>
-                  <p className='p-description justified-text'>Update your user profile information.</p>
-                  <tr>
-                    <td colSpan={2} className='tr-align-center'>
-                      <label htmlFor='email'>Email:</label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colSpan={2} className='tr-align-center'>
-                      <input
-                        type='text'
-                        id='email'
-                        name='email'
-                        readOnly
-                        value={formValues?.email}
-                        onChange={handleChange}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colSpan={2} className='tr-align-center'>
-                      <label htmlFor='givenName'>First Name:</label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colSpan={2} className='tr-align-center'>
-                      <input
-                        type='text'
-                        id='givenName'
-                        name='givenName'
-                        value={formValues?.givenName}
-                        onChange={handleChange}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colSpan={2} className='tr-align-center'>
-                      <label htmlFor='lastName'>Last Name:</label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colSpan={2} className='tr-align-center'>
-                      <input
-                        type='text'
-                        id='lastName'
-                        name='lastName'
-                        value={formValues?.lastName}
-                        onChange={handleChange}
-                      />
-                    </td>
-                  </tr>
-                  <br/>
-                  <h3>Security Methods</h3>
-                  <p className='p-description justified-text'>Secure your account by setting two factor authentication.</p>
-                  <tr>
-                    <td colSpan={2} className='tr-align-center'>
-                      <label>Second Factor Authentication: </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colSpan={2} className='tr-align-center'>
-                      <select id='mfa' name='mfa' onChange={handleSelect}>
-                        <option value='false'>None</option>
-                        <option value='email-otp-authenticator'>Email OTP</option>
-                        <option value='SMSOTP'>SMS OTP</option>
-                        <option value='totp'>TOTP</option>
-                      </select>
-                    </td>
-                  </tr>
-                  <label htmlFor='hint'>
-                    Changing the password will result in the termination of the current session.
-                    You will need to log in again using the updated password.
-                  </label>
-                  <button className='btn margin-top' type='submit'>Update</button>
-                </table>
-              </div> 
-            </div>
           </form>
         </div>
       </div>
