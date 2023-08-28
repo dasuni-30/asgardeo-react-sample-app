@@ -16,6 +16,7 @@ root.render(
       signOutRedirectURL: `${process.env.REACT_APP_BASE_URL}`,
       clientID: `${process.env.REACT_APP_CLIENT_ID}`,
       baseUrl: `${process.env.REACT_APP_ASGARDEO_BASE_URL}`,
+      resourceServerURLs: [ "https://71fe9995-65a1-4e05-92a8-bc40749649d8-prod.e1-us-east-azure.choreoapis.dev/hmvi/demoapi/endpoint-9090-803/1.0.0/accounts" ],
       scope: [ "openid","profile", "internal_login", "internal_user_mgt_view", "app_roles" ]
   } }
   >

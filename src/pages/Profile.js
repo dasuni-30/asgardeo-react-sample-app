@@ -70,13 +70,27 @@ const Profile = () => {
     }));
   }
 
-  const handleSubmit = async (event) => {
+  const handleSecondFactorSubmit = async (event) => {
+    event.preventDefault();
+    let _formData = {
+      ...userInfo,
+      [SCHEMA]: { ...userInfo?.[SCHEMA], preferredMFAOption: "{\"authenticationOption\":\""+ formValues?.mfa + "\"}"}
+    };
+    try {
+      updateUserDetails(_formData);
+    } catch (error) {
+      showNotification('Error in updating the user details.');
+    } finally {
+      showNotification('User details update successful.');
+    }
+  };
+
+  const handlePersonalInfoSubmit = async (event) => {
     event.preventDefault();
     let _formData = {
       ...userInfo,
       userName: `DEFAULT/${userInfo?.userName?.split('/')[1]}`,
-      name: { familyName: formValues?.lastName, givenName: formValues?.givenName },
-      [SCHEMA]: { ...userInfo?.[SCHEMA], preferredMFAOption: "{\"authenticationOption\":\""+ formValues?.mfa + "\"}"}
+      name: { familyName: formValues?.lastName, givenName: formValues?.givenName }
     };
     try {
       updateUserDetails(_formData);
@@ -127,7 +141,6 @@ const Profile = () => {
     <>
       <div className='App-section'>
         <div className="two-column-grid">
-
           <div className="column">
             <div className='info-box'>
               <header className='App-header-sub-section'>
@@ -141,7 +154,7 @@ const Profile = () => {
                     <label>User ID: <b>{formValues?.id}</b></label>
                   </tr>
               </header>
-              <form onSubmit={handlePasswordSubmit}>
+              <form onSubmit={handlePersonalInfoSubmit}>
                 <div className="table-container">
                   <table className="one-column-table">
                     <h3>Personal Info</h3>
@@ -203,8 +216,8 @@ const Profile = () => {
         </div>
         
         <div className="column">
-          <form onSubmit={handleSubmit}>
             <div className='info-box'>
+            <form onSubmit={handlePasswordSubmit}>
               <div className="table-container">
                 <table className="one-column-table">
                   <h3>Change Password</h3>
@@ -248,15 +261,11 @@ const Profile = () => {
                     </td>
                   </tr>
                   <button className='btn margin-top' type='submit'>Update</button>
-                  <tr>
-                    <td colSpan={2} className='tr-padding tr-align-center'>
-                      <div className='notification tr-align-center' id='successNotification'>
-                        <p className='p-description' id='notificationDescription'>Submission successful!</p>
-                      </div>
-                    </td>
-                  </tr>
                 </table>
                 </div>
+                </form>
+
+                <form onSubmit={handleSecondFactorSubmit}>
                 <div className="table-container">
                   <table className="one-column-table">
                     <h3>Second Factor Authentication</h3>
@@ -277,14 +286,21 @@ const Profile = () => {
                       </td>
                     </tr>
                     <label htmlFor='hint'>
-                      The selected seconf factor will be prompted for authentication in the login flow.
+                      The selected second factor will be prompted for authentication in the login flow.
                     </label>
                     <br/>
                     <button className='btn margin-top' type='submit'>Update</button>
                   </table>
                 </div>
+                </form>
               </div>
-          </form>
+              <tr>
+                <td colSpan={2} className='tr-padding tr-align-center'>
+                  <div className='notification tr-align-center' id='successNotification'>
+                    <p className='p-description' id='notificationDescription'>Submission successful!</p>
+                  </div>
+                </td>
+              </tr>
         </div>
       </div>
     </div>

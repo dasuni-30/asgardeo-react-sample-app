@@ -281,6 +281,10 @@ body {
   .info-box {
     width: 100vh;
   }
+
+  .row {
+    flex-direction: column;
+  }
 }
 
 /* Style the counter cards */
@@ -562,11 +566,14 @@ input:focus {
   width: 100%;
   border-radius: 8px;
   margin-bottom: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 /* Apply general styling to the table container */
 .table-container {
   display: flex;
+  flex-direction: column;
   justify-content: center; /* Horizontally center the table */
   align-items: center; /* Vertically center the table */
 }
