@@ -19,7 +19,7 @@ export const Home = () => {
   const signUpURL = `${process.env.REACT_APP_SIGN_UP_URL}${process.env.REACT_APP_CLIENT_ID} &sp=${process.env.REACT_APP_APPLICATION_NAME} &redirect_url=${process.env.REACT_APP_CLIENT_BASE_URL}`;
 
   return (
-    <div className='App'>
+    <>
       {
         state?.isAuthenticated
         ? (
@@ -29,7 +29,7 @@ export const Home = () => {
                 <div className="avatar-large">
                   <img alt='react-logo' src={ USER_LOGO } className='link-logo-image'/>
                 </div>
-                <h1>Hello <b>{state?.username}</b></h1>
+                <h1>Hello <b>{state?.displayName ?? state?.username}</b></h1>
                 <h4>Welcome to the React + Asgardeo demonstration app!</h4>
                 <p className='p-description justified-text max-width'>From here on you can experience the basic business application use cases integrated with Asgardeo for user profile management and other capabilities.</p>
               </div>
@@ -71,6 +71,6 @@ export const Home = () => {
           </header>
         )
       }
-    </div>
+    </>
   );
 };

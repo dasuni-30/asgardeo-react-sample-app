@@ -4,7 +4,8 @@
 
 .App {
   text-align: center;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   height: 100vh;
   width: 100;
 }
@@ -106,6 +107,10 @@
   justify-content: left;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
 .App h1 {
   font-family: Inter;
   font-weight: 300;
@@ -193,6 +198,7 @@ th, td {
   text-decoration: none;
   color: #000;
   font-size: small;
+  text-align: center;
 }
 
 .right-panel {
@@ -257,9 +263,9 @@ body {
 /* Responsive columns */
 @media screen and (max-width: 600px) {
   .col {
-    width: 100%;
     display: block;
     margin-bottom: 20px;
+    width: 50vh;
   }
 
   .row {
@@ -270,6 +276,9 @@ body {
     flex-direction: column;
   }
 
+  .card {
+    width: 500px;
+  }
 }
 
 @media screen and (max-width: 1180px) {
@@ -318,6 +327,11 @@ body {
   color: rgb(0 0 0 / 60%);
 }
 
+.card:hover {
+  background-color: #f5f5f5; /* Change background color on hover */
+  border: 1px solid var(--primary);
+}
+
 h3 {
   font-weight: 500;
 }
@@ -329,6 +343,8 @@ h3 {
   height: 40px;
   justify-content: center;
   display: flex;
+  position: fixed;
+  margin-top: 10px;
 }
 
 .footer a {
@@ -381,6 +397,14 @@ h3 {
   padding-right: 15px;
   width: 20px;
   height: 20px;
+}
+
+.small-icon {
+  height: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 15px;
+  height: 15px;
 }
 
 .link-logo-image-small:hover {
@@ -450,7 +474,7 @@ pre {
   line-height: 1.4;
   overflow-x: auto;
   white-space: pre-wrap;
-  width: 700px;
+  width: 800px;
   min-height: 100px;
   text-align: left;
   border-radius: 8px;
@@ -475,6 +499,7 @@ code {
   border: 1px solid #cccccc4b;
   border-radius: 8px;
   min-width: 70vh;
+  min-height: 50vh;
 }
 
 .column {
@@ -505,7 +530,7 @@ code {
 }
 
 /* Styles for the input box */
-input {
+input[type=text], input[type=password] {
   /* Set width and height */
   width: 400px;
   height: 25px;
@@ -532,6 +557,15 @@ input {
   outline: none;
 }
 
+input[type=radio] {
+  margin: 10px;
+}
+
+.radio input[type="radio"]:checked + .radio::after {
+  accent-color: var(--primary); /* Change border color for selected radio button */
+  background-color: var(--primary); /* Change background color for selected radio button */
+}
+
 select {
   width: 400px;
   height: 35px;
@@ -546,12 +580,17 @@ select {
 
 /* Hover effect */
 input:hover {
-  border-color: #999;
+  border-color: var(--primary);
 }
 
 /* Focus effect */
 input:focus {
   border-color: var(--primary);
+}
+
+/* Style the active class, and buttons on mouse-over */
+.active, .btn:hover {
+  border-bottom: 2px solid var(--primary);
 }
 
 .App-header-sub-section {
@@ -565,7 +604,7 @@ input:focus {
   color: rgb(0, 0, 0);
   width: 100%;
   border-radius: 8px;
-  margin-bottom: 15px;
+  margin-bottom: 50px;
   padding-top: 15px;
   padding-bottom: 15px;
 }
@@ -608,7 +647,7 @@ table.one-column-table tr {
   justify-content: center; /* Centers the columns horizontally */
   align-items: center; /* Centers the columns vertically */
   flex-direction: column;
-  height: 550px;
+  padding: 50px;
 }
 
 .logo-container {
@@ -705,7 +744,6 @@ table.one-column-table tr {
 .two-column-grid {
   display: flex;
   grid-template-columns: 1fr 1fr; /* Equal width columns */
-  gap: 5vh; /* Gap between columns */
 }
 
 .column {
@@ -725,5 +763,26 @@ table.one-column-table tr {
 }
 
 .theme-card-height {
-  height: 380px;
+  height: 300px;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust as needed */
+}
+
+.loader {
+  border: 4px solid #f3f3f3;
+  border-top: var(--primary);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

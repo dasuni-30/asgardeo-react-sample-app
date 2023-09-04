@@ -6,7 +6,6 @@ const externalApiEndpoint = `${endpointConfig.api.endpoints.externalApi}`;
 const auth = AsgardeoSPAClient.getInstance();
 
 export async function getExternalApi () {
-  console.log("ghhs");
 
   const requestConfig = {
       headers: {

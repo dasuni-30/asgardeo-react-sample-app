@@ -13,21 +13,26 @@ const Profile = () => {
   const [ passwordFormValues, setpasswordFormValues ] = useState();
   const { signOut } = useAuthContext();
   const [ userInfo, setUserInfo ] = useState();
+  const [ isLoading, setIsLoading ] = useState(false);
 
   const SCHEMA =  'urn:scim:wso2:schema';
   
   // Get the user details.
   useEffect(() => {
+    setIsLoading(true);
     (async () => {
       try {
         const response = await getUserDetails();
         setUserInfo(response);
+        setIsLoading(false);
       } catch (error) {
         // Log the error.
       }
     })();
+    
   }, []);
 
+  // Set the form values.
   useEffect(() => {
     if (userInfo) {
       setFormValues({
@@ -46,6 +51,7 @@ const Profile = () => {
     }
   },[ userInfo ]);
 
+  // Set the personal info form values when changing.
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormValues((prevFormValues) => ({
@@ -54,6 +60,7 @@ const Profile = () => {
     }));
   };
 
+  // Set the password form values when changing.
   const handlePasswordChange = (event) => {
     const { name, value } = event.target;
     setpasswordFormValues((prevFormValues) => ({
@@ -62,6 +69,7 @@ const Profile = () => {
     }));
   };
 
+  // Set the second factor authentication method form values when changing.
   function handleSelect(event) {
     const { name, value } = event.target;
     setFormValues((prevFormValues) => ({
@@ -70,6 +78,7 @@ const Profile = () => {
     }));
   }
 
+  // Update the second factor authentication method.
   const handleSecondFactorSubmit = async (event) => {
     event.preventDefault();
     let _formData = {
@@ -85,6 +94,7 @@ const Profile = () => {
     }
   };
 
+  // Update the user details.
   const handlePersonalInfoSubmit = async (event) => {
     event.preventDefault();
     let _formData = {
@@ -101,6 +111,7 @@ const Profile = () => {
     }
   };
 
+  // Update the password.
   const handlePasswordSubmit = async (event) => {
     event.preventDefault();
     console.log(passwordFormValues)
@@ -139,83 +150,72 @@ const Profile = () => {
 
   return (
     <>
-      <div className='App-section'>
-        <div className="two-column-grid">
-          <div className="column">
-            <div className='info-box'>
-              <header className='App-header-sub-section'>
-                  <div className="avatar-large">
-                    <img alt='react-logo' src={ formValues?.profileUrl ?? USER_LOGO} className='link-logo-image circular-image'/>
-                  </div>
-                  <h1>{`${formValues?.givenName} ${formValues?.lastName}`} </h1>
-                  <tr>
-                    <label>Username: <b>{formValues?.username}</b></label>
-                    <br/>
-                    <label>User ID: <b>{formValues?.id}</b></label>
-                  </tr>
-              </header>
-              <form onSubmit={handlePersonalInfoSubmit}>
+    { !isLoading ?
+      (<div className='App-section'>
+        <header className='App-header-sub-section'>
+          <div className="avatar-large">
+            <img alt='react-logo' src={ formValues?.profileUrl ?? USER_LOGO} className='link-logo-image circular-image'/>
+          </div>
+          <h1>{`${formValues?.givenName} ${formValues?.lastName}`} </h1>
+          <tr>
+            <label>Username: <b>{formValues?.username}</b></label>
+            <br/>
+            <label>User ID: <b>{formValues?.id}</b></label>
+          </tr>
+        </header>
+        <form onSubmit={handlePersonalInfoSubmit}>
                 <div className="table-container">
                   <table className="one-column-table">
                     <h3>Personal Info</h3>
                     <p className='p-description justified-text'>Update your user profile information.</p>
-                    <tr>
-                      <td colSpan={2} className='tr-align-center'>
-                        <label htmlFor='email'>Email:</label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colSpan={2} className='tr-align-center'>
-                        <input
-                          type='text'
-                          id='email'
-                          name='email'
-                          readOnly
-                          value={formValues?.email}
-                          onChange={handleChange}
-                        />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colSpan={2} className='tr-align-center'>
-                        <label htmlFor='givenName'>First Name:</label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colSpan={2} className='tr-align-center'>
-                        <input
-                          type='text'
-                          id='givenName'
-                          name='givenName'
-                          value={formValues?.givenName}
-                          onChange={handleChange}
-                        />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colSpan={2} className='tr-align-center'>
-                        <label htmlFor='lastName'>Last Name:</label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colSpan={2} className='tr-align-center'>
-                        <input
-                          type='text'
-                          id='lastName'
-                          name='lastName'
-                          value={formValues?.lastName}
-                          onChange={handleChange}
-                        />
-                      </td>
-                    </tr>
+                    <div className="two-column-grid">
+                    <div className="column">
+                      <tr>
+                        <td>
+                          <label htmlFor='givenName'>First Name:</label>
+                        </td>
+                        </tr>
+                        <tr>
+                        <td>
+                          <input
+                            type='text'
+                            id='givenName'
+                            name='givenName'
+                            value={formValues?.givenName}
+                            onChange={handleChange}
+                          />
+                        </td>
+                        </tr>
+                        </div>
+                        <div className="column">
+                      <tr>
+                        <td>
+                          <label htmlFor='lastName'>Last Name:</label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <input
+                            type='text'
+                            id='lastName'
+                            name='lastName'
+                            value={formValues?.lastName}
+                            onChange={handleChange}
+                          />
+                        </td>
+                      </tr>
+                      </div>
+                      </div>
                     <button className='btn margin-top' type='submit'>Update</button>
                   </table>
                 </div>
               </form>
-          </div>
-        </div>
-        
-        <div className="column">
+
+              <h3>Security Methods</h3>
+              <p className='p-description justified-text'>Secure your account by updating passwords and second factor authentication methods.</p>
+
+        <div className="two-column-grid">
+          <div className="column">
             <div className='info-box'>
             <form onSubmit={handlePasswordSubmit}>
               <div className="table-container">
@@ -260,11 +260,15 @@ const Profile = () => {
                       </label>
                     </td>
                   </tr>
-                  <button className='btn margin-top' type='submit'>Update</button>
+                  <button className='btn-outline btn-margin-top' type='submit'>Change</button>
                 </table>
                 </div>
                 </form>
+                </div>
+                </div>
 
+                <div className="column">
+                <div className='info-box'>
                 <form onSubmit={handleSecondFactorSubmit}>
                 <div className="table-container">
                   <table className="one-column-table">
@@ -289,7 +293,7 @@ const Profile = () => {
                       The selected second factor will be prompted for authentication in the login flow.
                     </label>
                     <br/>
-                    <button className='btn margin-top' type='submit'>Update</button>
+                    <button className='btn-margin-top btn-outline' type='submit'>Save</button>
                   </table>
                 </div>
                 </form>
@@ -303,7 +307,13 @@ const Profile = () => {
               </tr>
         </div>
       </div>
-    </div>
+    </div>)
+
+    : (<div class="loader-container">
+    <div class="loader"></div>
+  </div>
+  )
+}
   </>
   );
 };
